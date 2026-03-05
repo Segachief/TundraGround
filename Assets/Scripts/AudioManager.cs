@@ -60,7 +60,7 @@ public class AudioManager : MonoBehaviour
     }
 
     // Stops all music in preparation for the next track or for silence
-    public void StopPreviousMusic()
+    public void StopMusic()
     {
         title.Stop(); titlePlaying = false;
         mainMenu.Stop(); mainMenuPlaying = false;
@@ -77,7 +77,7 @@ public class AudioManager : MonoBehaviour
     {
         if (!titlePlaying)
         {
-            StopPreviousMusic();
+            StopMusic();
             title.Play(); titlePlaying = true;
             title.volume = 0.1f;
         }
@@ -87,7 +87,7 @@ public class AudioManager : MonoBehaviour
     {
         if (!mainMenuPlaying)
         {
-            StopPreviousMusic();
+            StopMusic();
             mainMenu.Play(); mainMenuPlaying = true;
             mainMenu.volume = 0.1f;
         }
@@ -97,7 +97,7 @@ public class AudioManager : MonoBehaviour
     {
         if (!level1Playing)
         {
-            StopPreviousMusic();
+            StopMusic();
             level1.Play(); level1Playing = true;
             level1.volume = 0.1f;
         }
@@ -107,7 +107,7 @@ public class AudioManager : MonoBehaviour
     {
         if (!level2Playing)
         {
-            StopPreviousMusic();
+            StopMusic();
             level2.Play(); level2Playing = true;
             level2.volume = 0.1f;
         }
@@ -117,7 +117,7 @@ public class AudioManager : MonoBehaviour
     {
         if (!level3Playing)
         {
-            StopPreviousMusic();
+            StopMusic();
             level3.Play(); level3Playing = true;
             level3.volume = 0.1f;
         }
@@ -127,7 +127,7 @@ public class AudioManager : MonoBehaviour
     {
         if (!level4Playing)
         {
-            StopPreviousMusic();
+            StopMusic();
             level4.Play(); level4Playing = true;
             level4.volume = 0.1f;
         }
@@ -137,7 +137,7 @@ public class AudioManager : MonoBehaviour
     {
         if (!level5Playing)
         {
-            StopPreviousMusic();
+            StopMusic();
             level5.Play(); level5Playing = true;
             level5.volume = 0.1f;
         }
@@ -147,7 +147,7 @@ public class AudioManager : MonoBehaviour
     {
         if (!gameOverPlaying)
         {
-            StopPreviousMusic();
+            StopMusic();
             gameOver.Play(); gameOverPlaying = true;
             gameOver.volume = 0.1f;
         }
@@ -157,7 +157,7 @@ public class AudioManager : MonoBehaviour
     {
         if (!levelCompletePlaying)
         {
-            StopPreviousMusic();
+            StopMusic();
             levelComplete.Play(); levelCompletePlaying = true;
             levelComplete.volume = 0.1f;
         }
