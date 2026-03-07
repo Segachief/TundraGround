@@ -8,6 +8,36 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/DebugCalum.unity
+    guid: 523116922212dba49afa3bae96de6122
+  - enabled: 1
+    path: Assets/Scenes/DebugJamie.unity
+    guid: 64477ad82aab0dc4cb6295039b94000b
+  - enabled: 1
+    path: Assets/Scenes/DebugMichael.unity
+    guid: c8ff1634293e7804ab94efb68d94b716
+  - enabled: 1
+    path: Assets/Scenes/DebugStewart.unity
+    guid: 812b14a29b3795446b89d7582e6f1b6c
+  - enabled: 1
+    path: Assets/Scenes/DebugTommy.unity
+    guid: 33c96f7ee1f1b8e43af7c7343ab1e74b
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: fed2e844a6eff484a8c046f5b001c70b
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: a4e5502fae15b7b46b483cb321352ea1
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: e436b986ae906654099c6269de4cd7a4
+  - enabled: 1
+    path: Assets/Scenes/Level4.unity
+    guid: 730017fedf0c11a48aec1d71e0ccae7a
+  - enabled: 1
+    path: Assets/Scenes/Level5.unity
+    guid: 8616d265228089941a2237e54b4b1218
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

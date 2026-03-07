@@ -5,25 +5,12 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     string currentScene = "";
-    private static LevelManager instance;
     private AudioManager audioManager;
     
 
     void Awake()
     {
         audioManager = FindFirstObjectByType<AudioManager>();
-
-        // If no LevelManager exists, this creates one
-        // It also ensures there is never more than one
-        if(LevelManager.instance == null)
-        {
-            DontDestroyOnLoad(this);
-            LevelManager.instance = this;
-        }
-        else
-        {
-            Destroy (this.gameObject);
-        }
     }
 
     public void LoadMainMenu()
@@ -32,7 +19,7 @@ public class LevelManager : MonoBehaviour
 
         currentScene = "MainMenu";
         ScreenFader.Instance.FadeToScene(currentScene);
-        audioManager.StartTitleMusic();
+        audioManager.StartMainMenuMusic();
         audioManager.StartFadeMusicIn(currentScene);
     }
 

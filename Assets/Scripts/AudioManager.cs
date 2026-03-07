@@ -94,6 +94,26 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void StartGameOverMusic()
+    {
+        if (!gameOverPlaying)
+        {
+            StopMusic();
+            gameOver.Play(); gameOverPlaying = true;
+            gameOver.volume = 0.1f;
+        }
+    }
+
+    public void StartLevelCompleteMusic()
+    {
+        if (!levelCompletePlaying)
+        {
+            StopMusic();
+            levelComplete.Play(); levelCompletePlaying = true;
+            levelComplete.volume = 0.1f;
+        }
+    }
+
     public void StartLevel1Music()
     {
         if (!level1Playing)
@@ -141,26 +161,6 @@ public class AudioManager : MonoBehaviour
             StopMusic();
             level5.Play(); level5Playing = true;
             level5.volume = 0.1f;
-        }
-    }
-
-    public void StartGameOverMusic()
-    {
-        if (!gameOverPlaying)
-        {
-            StopMusic();
-            gameOver.Play(); gameOverPlaying = true;
-            gameOver.volume = 0.1f;
-        }
-    }
-
-    public void StartLevelCompleteMusic()
-    {
-        if (!levelCompletePlaying)
-        {
-            StopMusic();
-            levelComplete.Play(); levelCompletePlaying = true;
-            levelComplete.volume = 0.1f;
         }
     }
 
