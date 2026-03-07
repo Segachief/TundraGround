@@ -45,6 +45,11 @@ public class AudioManager : MonoBehaviour
     // the game's runtime
     private static AudioManager instance;
 
+    //ToDo
+    // If a volume option is added for the user, this value then needs to
+    // replace the explicitly defined volumes used here with headroom for
+    // the fadein to get a ramp.
+
     void Awake()
     {
         // If no AudioManager exists, this creates one
@@ -78,9 +83,8 @@ public class AudioManager : MonoBehaviour
     {
         if (!titlePlaying)
         {
-            StopMusic();
             title.Play(); titlePlaying = true;
-            title.volume = 0.1f;
+            title.volume = 0.01f;
         }
     }
 
@@ -88,9 +92,8 @@ public class AudioManager : MonoBehaviour
     {
         if (!mainMenuPlaying)
         {
-            StopMusic();
             mainMenu.Play(); mainMenuPlaying = true;
-            mainMenu.volume = 0.1f;
+            mainMenu.volume = 0.01f;
         }
     }
 
@@ -98,9 +101,8 @@ public class AudioManager : MonoBehaviour
     {
         if (!gameOverPlaying)
         {
-            StopMusic();
             gameOver.Play(); gameOverPlaying = true;
-            gameOver.volume = 0.1f;
+            gameOver.volume = 0.01f;
         }
     }
 
@@ -108,9 +110,8 @@ public class AudioManager : MonoBehaviour
     {
         if (!levelCompletePlaying)
         {
-            StopMusic();
             levelComplete.Play(); levelCompletePlaying = true;
-            levelComplete.volume = 0.1f;
+            levelComplete.volume = 0.01f;
         }
     }
 
@@ -118,9 +119,8 @@ public class AudioManager : MonoBehaviour
     {
         if (!level1Playing)
         {
-            StopMusic();
             level1.Play(); level1Playing = true;
-            level1.volume = 0.1f;
+            level1.volume = 0.01f;
         }
     }
 
@@ -128,9 +128,8 @@ public class AudioManager : MonoBehaviour
     {
         if (!level2Playing)
         {
-            StopMusic();
             level2.Play(); level2Playing = true;
-            level2.volume = 0.1f;
+            level2.volume = 0.01f;
         }
     }
 
@@ -138,9 +137,8 @@ public class AudioManager : MonoBehaviour
     {
         if (!level3Playing)
         {
-            StopMusic();
             level3.Play(); level3Playing = true;
-            level3.volume = 0.1f;
+            level3.volume = 0.01f;
         }
     }
 
@@ -148,9 +146,8 @@ public class AudioManager : MonoBehaviour
     {
         if (!level4Playing)
         {
-            StopMusic();
             level4.Play(); level4Playing = true;
-            level4.volume = 0.1f;
+            level4.volume = 0.01f;
         }
     }
 
@@ -158,9 +155,8 @@ public class AudioManager : MonoBehaviour
     {
         if (!level5Playing)
         {
-            StopMusic();
             level5.Play(); level5Playing = true;
-            level5.volume = 0.1f;
+            level5.volume = 0.01f;
         }
     }
 
@@ -181,84 +177,7 @@ public class AudioManager : MonoBehaviour
     // potential for code cleanup here.
     private IEnumerator FadeMusic(string fade, string songName)
     {
-        if (fade == "FadeIn")
-        {
-            switch(songName)
-            {
-                case "Title":
-                while (title.volume > 0)
-                {
-                    title.volume -= 0.0001f;
-                    yield return new WaitForSeconds(fadeTimerInterval);
-                }
-                break;
-
-                case "MainMenu":
-                while (mainMenu.volume > 0)
-                {
-                    mainMenu.volume -= 0.0001f;
-                    yield return new WaitForSeconds(fadeTimerInterval);
-                }
-                break;
-
-                case "Level1":
-                while (level1.volume > 0)
-                {
-                    level1.volume -= 0.0001f;
-                    yield return new WaitForSeconds(fadeTimerInterval);
-                }
-                break;
-
-                case "Level2":
-                while (level2.volume > 0)
-                {
-                    level2.volume -= 0.0001f;
-                    yield return new WaitForSeconds(fadeTimerInterval);
-                }
-                break;
-
-                case "Level3":
-                while (level3.volume > 0)
-                {
-                    level3.volume -= 0.0001f;
-                    yield return new WaitForSeconds(fadeTimerInterval);
-                }
-                break;
-
-                case "Level4":
-                while (level4.volume > 0)
-                {
-                    level4.volume -= 0.0001f;
-                    yield return new WaitForSeconds(fadeTimerInterval);
-                }
-                break;
-
-                case "Level5":
-                while (level5.volume > 0)
-                {
-                    level5.volume -= 0.0001f;
-                    yield return new WaitForSeconds(fadeTimerInterval);
-                }
-                break;
-
-                case "GameOver":
-                while (gameOver.volume > 0)
-                {
-                    gameOver.volume -= 0.0001f;
-                    yield return new WaitForSeconds(fadeTimerInterval);
-                }
-                break;
-
-                case "LevelComplete":
-                while (levelComplete.volume > 0)
-                {
-                    levelComplete.volume -= 0.0001f;
-                    yield return new WaitForSeconds(fadeTimerInterval);
-                }
-                break;
-            }
-        }
-        else if (fade == "FadeOut")
+    if (fade == "FadeIn")
         {
             switch(songName)
             {
@@ -279,6 +198,7 @@ public class AudioManager : MonoBehaviour
                 break;
 
                 case "Level1":
+                case "DebugTommy":
                 while (level1.volume < 0.1f)
                 {
                     level1.volume += 0.0001f;
@@ -287,6 +207,7 @@ public class AudioManager : MonoBehaviour
                 break;
 
                 case "Level2":
+                case "DebugMichael":
                 while (level2.volume < 0.1f)
                 {
                     level2.volume += 0.0001f;
@@ -295,6 +216,7 @@ public class AudioManager : MonoBehaviour
                 break;
 
                 case "Level3":
+                case "DebugCalum":
                 while (level3.volume < 0.1f)
                 {
                     level3.volume += 0.0001f;
@@ -303,6 +225,7 @@ public class AudioManager : MonoBehaviour
                 break;
 
                 case "Level4":
+                case "DebugJamie":
                 while (level4.volume < 0.1f)
                 {
                     level4.volume += 0.0001f;
@@ -311,6 +234,7 @@ public class AudioManager : MonoBehaviour
                 break;
 
                 case "Level5":
+                case "DebugStewart":
                 while (level5.volume < 0.1f)
                 {
                     level5.volume += 0.0001f;
@@ -330,6 +254,88 @@ public class AudioManager : MonoBehaviour
                 while (levelComplete.volume < 0.1f)
                 {
                     levelComplete.volume += 0.0001f;
+                    yield return new WaitForSeconds(fadeTimerInterval);
+                }
+                break;
+            }
+        }
+        else if (fade == "FadeOut")
+        {
+            switch(songName)
+            {
+                case "Title":
+                while (title.volume < 0)
+                {
+                    title.volume -= 0.001f;
+                    yield return new WaitForSeconds(fadeTimerInterval);
+                }
+                break;
+
+                case "MainMenu":
+                while (mainMenu.volume > 0)
+                {
+                    mainMenu.volume -= 0.001f;
+                    yield return new WaitForSeconds(fadeTimerInterval);
+                }
+                break;
+
+                case "Level1":
+                case "DebugTommy":
+                while (level1.volume > 0)
+                {
+                    level1.volume -= 0.001f;
+                    yield return new WaitForSeconds(fadeTimerInterval);
+                }
+                break;
+
+                case "Level2":
+                case "DebugMichael":
+                while (level2.volume > 0)
+                {
+                    level2.volume -= 0.001f;
+                    yield return new WaitForSeconds(fadeTimerInterval);
+                }
+                break;
+
+                case "Level3":
+                case "DebugCalum":
+                while (level3.volume > 0)
+                {
+                    level3.volume -= 0.001f;
+                    yield return new WaitForSeconds(fadeTimerInterval);
+                }
+                break;
+
+                case "Level4":
+                case "DebugJamie":
+                while (level4.volume > 0)
+                {
+                    level4.volume -= 0.001f;
+                    yield return new WaitForSeconds(fadeTimerInterval);
+                }
+                break;
+
+                case "Level5":
+                case "DebugStewart":
+                while (level5.volume > 0)
+                {
+                    level5.volume -= 0.001f;
+                    yield return new WaitForSeconds(fadeTimerInterval);
+                }
+                break;
+
+                case "GameOver":
+                while (gameOver.volume > 0)
+                {
+                    gameOver.volume -= 0.001f;
+                    yield return new WaitForSeconds(fadeTimerInterval);
+                }
+                break;
+
+                case "LevelComplete":
+                while (levelComplete.volume > 0)
+                {
+                    levelComplete.volume -= 0.001f;
                     yield return new WaitForSeconds(fadeTimerInterval);
                 }
                 break;

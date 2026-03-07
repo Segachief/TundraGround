@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour
 
         currentScene = "MainMenu";
         ScreenFader.Instance.FadeToScene(currentScene);
+        audioManager.StopMusic();
         audioManager.StartMainMenuMusic();
         audioManager.StartFadeMusicIn(currentScene);
     }
@@ -30,6 +31,7 @@ public class LevelManager : MonoBehaviour
         
         currentScene = "GameOver";
         ScreenFader.Instance.FadeToScene(currentScene);
+        audioManager.StopMusic();
         audioManager.StartGameOverMusic();
         audioManager.StartFadeMusicIn(currentScene);
     }
@@ -47,6 +49,7 @@ public class LevelManager : MonoBehaviour
         
         currentScene = "Level1";
         ScreenFader.Instance.FadeToScene(currentScene);
+        audioManager.StopMusic();
         audioManager.StartLevel1Music();
         audioManager.StartFadeMusicIn(currentScene);
     }
@@ -59,6 +62,7 @@ public class LevelManager : MonoBehaviour
         
         currentScene = "Level2";
         ScreenFader.Instance.FadeToScene(currentScene);
+        audioManager.StopMusic();
         audioManager.StartLevel2Music();
         audioManager.StartFadeMusicIn(currentScene);
     }
@@ -71,6 +75,7 @@ public class LevelManager : MonoBehaviour
         
         currentScene = "Level3";
         ScreenFader.Instance.FadeToScene(currentScene);
+        audioManager.StopMusic();
         audioManager.StartLevel3Music();
         audioManager.StartFadeMusicIn(currentScene);
     }
@@ -83,6 +88,7 @@ public class LevelManager : MonoBehaviour
         
         currentScene = "Level4";
         ScreenFader.Instance.FadeToScene(currentScene);
+        audioManager.StopMusic();
         audioManager.StartLevel4Music();
         audioManager.StartFadeMusicIn(currentScene);
     }
@@ -95,6 +101,7 @@ public class LevelManager : MonoBehaviour
         
         currentScene = "Level5";
         ScreenFader.Instance.FadeToScene(currentScene);
+        audioManager.StopMusic();
         audioManager.StartLevel5Music();
         audioManager.StartFadeMusicIn(currentScene);
     }
@@ -107,6 +114,7 @@ public class LevelManager : MonoBehaviour
         
         currentScene = "DebugCalum";
         ScreenFader.Instance.FadeToScene(currentScene);
+        audioManager.StopMusic();
         audioManager.StartLevel3Music();
         audioManager.StartFadeMusicIn(currentScene);
     }
@@ -119,6 +127,7 @@ public class LevelManager : MonoBehaviour
         
         currentScene = "DebugJamie";
         ScreenFader.Instance.FadeToScene(currentScene);
+        audioManager.StopMusic();
         audioManager.StartLevel4Music();
         audioManager.StartFadeMusicIn(currentScene);
     }
@@ -131,6 +140,7 @@ public class LevelManager : MonoBehaviour
         
         currentScene = "DebugMichael";
         ScreenFader.Instance.FadeToScene(currentScene);
+        audioManager.StopMusic();
         audioManager.StartLevel2Music();
         audioManager.StartFadeMusicIn(currentScene);
     }
@@ -143,6 +153,7 @@ public class LevelManager : MonoBehaviour
         
         currentScene = "DebugStewart";
         ScreenFader.Instance.FadeToScene(currentScene);
+        audioManager.StopMusic();
         audioManager.StartLevel5Music();
         audioManager.StartFadeMusicIn(currentScene);
     }
@@ -155,6 +166,7 @@ public class LevelManager : MonoBehaviour
         
         currentScene = "DebugTommy";
         ScreenFader.Instance.FadeToScene(currentScene);
+        audioManager.StopMusic();
         audioManager.StartLevel1Music();
         audioManager.StartFadeMusicIn(currentScene);
     }
