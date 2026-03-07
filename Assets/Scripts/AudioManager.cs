@@ -41,14 +41,15 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource openCraftingUI;
     [SerializeField] private AudioSource closeCraftingUI;
 
+    // Note: This object is intended to be used as a Singleton.
+    // That means it's generated once, and then kept alive (not destroyed)
+    // when moving between scenes. Avoid adding it to other scenes other
+    // than the game's starting screen (currently MainMenu); access the
+    // other scenes via the Level Select to avoid audio issues/crashes.
+
     // This is the AudioManager instance that will exist throughout
     // the game's runtime
     private static AudioManager instance;
-
-    //ToDo
-    // If a volume option is added for the user, this value then needs to
-    // replace the explicitly defined volumes used here with headroom for
-    // the fadein to get a ramp.
 
     void Awake()
     {
