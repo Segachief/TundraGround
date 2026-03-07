@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class AudioManager : MonoBehaviour
 {
@@ -184,7 +185,7 @@ public class AudioManager : MonoBehaviour
         {
             switch(songName)
             {
-                case "title":
+                case "Title":
                 while (title.volume > 0)
                 {
                     title.volume -= 0.0001f;
@@ -261,7 +262,7 @@ public class AudioManager : MonoBehaviour
         {
             switch(songName)
             {
-                case "title":
+                case "Title":
                 while (title.volume < 0.1f)
                 {
                     title.volume += 0.0001f;
@@ -340,8 +341,8 @@ public class AudioManager : MonoBehaviour
     // to avoid repetition
     public void PlayRandomPitch()
     {
-        int clip = Random.Range(0, bearAttackClips.Length);
-        bearAttack.pitch = Random.Range(0.9f, 1.1f);
+        int clip = UnityEngine.Random.Range(0, bearAttackClips.Length);
+        bearAttack.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
         bearAttack.PlayOneShot(bearAttackClips[clip]);
     }
 }
