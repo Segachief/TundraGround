@@ -1,0 +1,73 @@
+using UnityEditor.Tilemaps;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class PlayerMovement : MonoBehaviour
+{
+    [SerializeField] float moveSpeed = 4f;
+    [SerializeField] float jumpSpeed = 11f;
+    Vector2 moveInput;
+    Rigidbody2D rb;
+    Animator myAnimator;
+    CapsuleCollider2D myCapsuleCollider;
+
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
+        myCapsuleCollider = GetComponent<CapsuleCollider2D>();
+    }
+
+    void Update()
+    {
+        Run();
+        FlipSprite();
+    }
+
+    void OnMove(InputValue value)
+    {
+        moveInput = value.Get<Vector2>();
+    }
+
+    void OnJump(InputValue value)
+    {
+        // Checks if the player is touching the Ground layer
+        // If not, prevents the use of Jump
+        if(value.isPressed && 
+            myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            rb.linearVelocity += new Vector2(0f, jumpSpeed);
+        }
+    }
+
+    void Run()
+    {
+        Vector2 playerVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = playerVelocity;
+
+        bool hasHorizontalSpeed = Mathf.Abs(rb.linearVelocity.x) > Mathf.Epsilon;
+         if(hasHorizontalSpeed)
+         {
+             myAnimator.SetBool("isRunning", true);
+         }
+         else
+         {
+             myAnimator.SetBool("isRunning", false);
+         }
+    }
+
+    void FlipSprite()
+    {
+        // Checks if player has any X-axis momentum
+        // Epsilon is an alternative to 0, a float with a tiny value.
+        // Movement may not always reach absolute 0 so this is a way to cover those
+        // fringe cases (for example, value is within deadzone on a controller stick).
+        bool hasHorizontalSpeed = Mathf.Abs(rb.linearVelocity.x) > Mathf.Epsilon;
+        if(hasHorizontalSpeed)
+        {
+            // Flips the sprite based on its velocity x movement
+            transform.localScale = new Vector2(Mathf.Sign(rb.linearVelocity.x), 1f);
+        }
+    }
+}
