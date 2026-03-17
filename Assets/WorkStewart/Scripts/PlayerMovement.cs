@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         // If not, prevents the use of Jump
         if(value.isPressed && 
             myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))
-            && myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+            || myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
             rb.linearVelocity += new Vector2(0f, jumpSpeed);
         }
