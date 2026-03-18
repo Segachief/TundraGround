@@ -8,7 +8,7 @@ public class ItemDataScript : MonoBehaviour
     //1. Add the prefab under the "Buttons" gameobject
     //2. Set the Onclick() function gameobject to InventoryManager and set function to InventoryUIClicked()
     //3. Set the gameobject in InventoryUIClicked to the CraftingButton
-    
+    //
     public ItemData item;
     
     private void Start()
