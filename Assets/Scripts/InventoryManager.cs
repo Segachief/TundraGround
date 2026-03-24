@@ -1,5 +1,6 @@
 
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -14,8 +15,8 @@ public class InventoryManager : MonoBehaviour
     private TextMeshProUGUI WoodText;
     public ItemData[] Inventory = new ItemData[4];
     private GameObject[] InventoryIcons;
-
-    private static InventoryManager instance;
+    public GameObject IsTouchingGm;
+    public static InventoryManager instance;
     void Awake()
     {
         //set instance
@@ -39,6 +40,7 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         //any gameobjects needing a reference are done here --
+      
         WoodText = GameObject.Find("WoodText").GetComponent<TextMeshProUGUI>();
         InventoryUI = GameObject.Find("Background");
         GameObject InvButtons = GameObject.Find("Icons");
@@ -191,6 +193,13 @@ public class InventoryManager : MonoBehaviour
         switch (item.Name)
         {
             case ("NewAxe"):
+                //every interaction an item can have is put here
+                //IsTouchingGM is set from the InteractableBehaviour script attached to every Interactable GameObject.
+                if (IsTouchingGm.name.Contains("tree"))
+                {
+                    AddWood(20);
+                    Destroy(IsTouchingGm.gameObject);
+                }
                 Debug.Log("Player swings axe as hard as they can... it breaks from the force.");
                 return;
 
