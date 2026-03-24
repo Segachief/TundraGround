@@ -13,19 +13,36 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     Animator myAnimator;
     CapsuleCollider2D myCapsuleCollider;
-    float startingGravity;
-
+    float playerGravity;
+    float playerWood;
+    InventoryManager inventoryManager;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myCapsuleCollider = GetComponent<CapsuleCollider2D>();
-        startingGravity = rb.gravityScale;
+        playerGravity = rb.gravityScale;
+        inventoryManager = FindFirstObjectByType<InventoryManager>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        Debug.Log("rb's Gravity Scale: " + rb.gravityScale);
+        Debug.Log("PlayerGravity: " + playerGravity);
+        Debug.Log("Gravity Scale Modifier: " + rb.gravityScale);
+        Debug.Log("Amount of wood: " + inventoryManager.Wood);
+
+        if (myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        {
+            rb.gravityScale = 0f;
+        }
+        else
+        {
+            playerWood = inventoryManager.Wood + 1;
+            rb.gravityScale = playerWood * playerGravity;
+        }
+        
         Run();
         FlipSprite();
         ClimbLadder();
@@ -85,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
             // Prevents slide of player from gravity during climb
             // If we want the player to gradually slide down a tree, then this
             // can be removed or a check for tree/surface made to distinguish
-            rb.gravityScale = 0f;
+            
             Vector2 climbVelocity = new Vector2(rb.linearVelocity.x, moveInput.y * climbSpeed);
             rb.linearVelocity = climbVelocity;
 
@@ -96,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            rb.gravityScale = startingGravity;
+            rb.gravityScale = playerGravity;
             myAnimator.SetBool("isClimbing", false);
         }
     }
