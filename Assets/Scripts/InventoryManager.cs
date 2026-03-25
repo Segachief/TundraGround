@@ -17,6 +17,7 @@ public class InventoryManager : MonoBehaviour
     private GameObject[] InventoryIcons;
     public GameObject IsTouchingGm;
     public static InventoryManager instance;
+    public float MenuTime;
     void Awake()
     {
         //set instance
@@ -58,13 +59,14 @@ public class InventoryManager : MonoBehaviour
                 i++;
             }
         }
+        InventoryUI.SetActive(false);
 
     }
     // Update is called once per frame
     void Update()
     {
         //this is for debug purposes
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.T))
         {
             AddWood(1);
             
@@ -72,13 +74,23 @@ public class InventoryManager : MonoBehaviour
 
 
 
-        ///open and closing inventoryUI
+        ///open and closing inventoryUI and slowing down time
         if (Input.GetKeyDown(inventory_open_key))
         {
 
             InventoryUI.SetActive(!InventoryUI.activeSelf);
+            if(Time.timeScale == MenuTime)
+            {
+                Time.timeScale = 1;
+                Time.fixedDeltaTime *= Time.timeScale;
+            }
+            else
+            {
+                Time.timeScale = MenuTime;
+                Time.fixedDeltaTime *= Time.timeScale;
+            }
         }
-
+        
         UpdateInventoryIcons();
     }
 
@@ -198,6 +210,7 @@ public class InventoryManager : MonoBehaviour
                 if (IsTouchingGm.name.Contains("tree"))
                 {
                     AddWood(20);
+                    
                     Destroy(IsTouchingGm.gameObject);
                 }
                 Debug.Log("Player swings axe as hard as they can... it breaks from the force.");

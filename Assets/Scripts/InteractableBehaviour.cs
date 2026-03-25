@@ -12,10 +12,23 @@ public class InteractableBehaviour : MonoBehaviour
     }
 
 
-    public void OnTriggerEnter2D()
+    public void OnTriggerStay2D(Collider2D collision)
     {
-        InventoryManager.instance.IsTouchingGm = gameObject;
-        return;
+        if (collision.gameObject == player)
+        {
+            InventoryManager.instance.IsTouchingGm = gameObject;
+                return;
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject == player)
+        {
+            InventoryManager.instance.IsTouchingGm = null;
+            return;
+        }
     }
 }
+
 
