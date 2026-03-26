@@ -159,9 +159,9 @@ MonoBehaviour:
       Enabled: 0
       Size: {x: 0.8, y: 0.8}
       Offset: {x: 0, y: 0}
-  CenterOnActivate: 1
+  CenterOnActivate: 0
   TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 0.5, y: 0.5}
+  Damping: {x: 0, y: 0}
   Lookahead:
     Enabled: 0
     Time: 0
@@ -1143,7 +1143,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cinemachineCam: {fileID: 57476347}
-  player: {fileID: 1088230205}
 --- !u!4 &737970305
 Transform:
   m_ObjectHideFlags: 0
@@ -2604,7 +2603,7 @@ GameObject:
   - component: {fileID: 874246059}
   - component: {fileID: 874246058}
   - component: {fileID: 874246061}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5389,9 +5388,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowDebugText: 0
   ShowCameraFrustum: 1
-  IgnoreTimeScale: 0
+  IgnoreTimeScale: 1
   WorldUpOverride: {fileID: 0}
-  ChannelMask: -1
+  ChannelMask: 32767
   UpdateMethod: 2
   BlendUpdateMethod: 1
   LensModeOverride:

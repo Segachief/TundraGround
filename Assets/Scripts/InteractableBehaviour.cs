@@ -10,8 +10,8 @@ public class InteractableBehaviour : MonoBehaviour
         player = GameObject.Find("Player");
 
     }
-
-
+   
+    //IsTouchingGm is a reference to the gameobject that the player is currently collding with , any interactions are done in the inventorymanager
     public void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject == player)
@@ -29,6 +29,7 @@ public class InteractableBehaviour : MonoBehaviour
             return;
         }
     }
+
 }
 
 

@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     Animator myAnimator;
     CapsuleCollider2D myCapsuleCollider;
     float startingGravity;
-
+    //Note from jam : maybe add another condition to player climbing so they have to press up first? would make it so its an intentional choice to climb
 
     void Start()
     {
