@@ -204,8 +204,10 @@ public class InventoryManager : MonoBehaviour
 
     public void UseItem(ItemData item)
     {
+        
         switch (item.Name)
         {
+            
             case ("NewAxe"):
                 //every interaction an item can have is put here
                 //IsTouchingGM is set from the InteractableBehaviour script attached to every Interactable GameObject.
@@ -219,8 +221,10 @@ public class InventoryManager : MonoBehaviour
                 return;
 
             default:
+                
                 Debug.Log("item not recognized");
                 return;
         }
+        
     }
 }

@@ -30,6 +30,10 @@ public class InteractableBehaviour : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        InventoryManager.instance.IsTouchingGm = null;
+    }
 }
 
 
