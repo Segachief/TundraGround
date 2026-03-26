@@ -4,10 +4,11 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public CinemachineCamera cinemachineCam;
-    public Transform player;
+    private Transform player;
 
     void Start()
     {
+        player = GameObject.Find("Player").transform;
         if (cinemachineCam != null && player != null)
         {
             cinemachineCam.Follow = player;
@@ -19,3 +20,4 @@ public class CameraFollow : MonoBehaviour
         }
     }
 }
+
