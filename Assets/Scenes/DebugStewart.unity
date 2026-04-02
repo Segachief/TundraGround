@@ -5171,7 +5171,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cinemachineCam: {fileID: 1070338280}
-  player: {fileID: 927596404022032319}
 --- !u!4 &1680377913
 Transform:
   m_ObjectHideFlags: 0
