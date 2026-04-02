@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 288783719}
   - component: {fileID: 288783718}
   - component: {fileID: 288783721}
+  - component: {fileID: 288783722}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -206,11 +207,11 @@ Transform:
   m_GameObject: {fileID: 288783717}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -0.06, y: 0.6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1060544522}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &288783721
 MonoBehaviour:
@@ -256,6 +257,19 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &288783722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288783717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 650e0af0e8f5f33438176d4e365ad320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1060544522}
 --- !u!1 &753387235
 GameObject:
   m_ObjectHideFlags: 0
@@ -7240,8 +7254,7 @@ Transform:
   m_LocalPosition: {x: -0.06, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 288783720}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1060544524
@@ -7256,6 +7269,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 228ff56378ef37d47be407108e9f4b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpableGround:
+    serializedVersion: 2
+    m_Bits: 64
+  moveSpeed: 7
+  jumpForce: 14
 --- !u!95 &1060544525
 Animator:
   serializedVersion: 7
@@ -7338,7 +7356,8 @@ GameObject:
   - component: {fileID: 1983658067}
   - component: {fileID: 1983658066}
   - component: {fileID: 1983658065}
-  m_Layer: 0
+  - component: {fileID: 1983658070}
+  m_Layer: 6
   m_Name: 'Terrian '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7391,7 +7410,7 @@ CompositeCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -8440,9 +8459,29 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!251 &1983658070
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983658062}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 288783720}
   - {fileID: 1253535936}
   - {fileID: 1060544522}
