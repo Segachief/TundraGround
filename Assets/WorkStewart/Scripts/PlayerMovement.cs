@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     Animator myAnimator;
     CapsuleCollider2D myCapsuleCollider;
     float playerGravity;
-    float playerWood;
     InventoryManager inventoryManager;
     float startingGravity;
 
@@ -29,21 +28,28 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log("rb's Gravity Scale: " + rb.gravityScale);
-        Debug.Log("PlayerGravity: " + playerGravity);
-        Debug.Log("Gravity Scale Modifier: " + rb.gravityScale);
-        Debug.Log("Amount of wood: " + inventoryManager.Wood);
-
         if (myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
             rb.gravityScale = 0f;
         }
         else
         {
-            playerWood = inventoryManager.Wood + 1;
-            rb.gravityScale = playerWood * playerGravity;
+            // Decreases jump height in stages; scaling it per unit of wood
+            // may make it difficult to design obstacles around vs. having
+            // clear-cut jump heights.
+            if (inventoryManager.Wood < 10)
+            {
+                rb.gravityScale = 2f;
+            }
+            else if (inventoryManager.Wood >= 10)
+            {
+                rb.gravityScale = 3f;
+            }
+            else if (inventoryManager.Wood >= 20)
+            {
+                rb.gravityScale = 4f;
+            }
         }
-        
         Run();
         FlipSprite();
         ClimbLadder();
@@ -103,18 +109,16 @@ public class PlayerMovement : MonoBehaviour
             // Prevents slide of player from gravity during climb
             // If we want the player to gradually slide down a tree, then this
             // can be removed or a check for tree/surface made to distinguish
-            
             Vector2 climbVelocity = new Vector2(rb.linearVelocity.x, moveInput.y * climbSpeed);
             rb.linearVelocity = climbVelocity;
 
             // May be good to add an idle anim for being on a climbable surface
             // but not moving up or down; uses regular standing idle currently
             bool hasVerticalSpeed = Mathf.Abs(rb.linearVelocity.y) > Mathf.Epsilon;
-            myAnimator.SetBool("isClimbing", hasVerticalSpeed); 
+            myAnimator.SetBool("isClimbing", hasVerticalSpeed);
         }
         else
         {
-            rb.gravityScale = playerGravity;
             myAnimator.SetBool("isClimbing", false);
         }
     }
