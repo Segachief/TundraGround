@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     float playerGravity;
     float playerWood;
     InventoryManager inventoryManager;
+    float startingGravity;
 
     void Start()
     {
