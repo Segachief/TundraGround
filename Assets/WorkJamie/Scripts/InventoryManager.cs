@@ -1,5 +1,6 @@
 
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -7,15 +8,16 @@ using UnityEngine.UIElements;
 
 public class InventoryManager : MonoBehaviour
 {
-    //Note that most of the menu assets are made using simple blocks and basic fonts, this is to be changed later in development.
+    //amazing code written by jamie
     public int Wood;
     public KeyCode inventory_open_key;
     private GameObject InventoryUI;
     private TextMeshProUGUI WoodText;
     public ItemData[] Inventory = new ItemData[4];
     private GameObject[] InventoryIcons;
-
-    private static InventoryManager instance;
+    public GameObject IsTouchingGm;
+    public static InventoryManager instance;
+    public float MenuTime;
     void Awake()
     {
         //set instance
@@ -39,13 +41,14 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         //any gameobjects needing a reference are done here --
+      
         WoodText = GameObject.Find("WoodText").GetComponent<TextMeshProUGUI>();
         InventoryUI = GameObject.Find("Background");
         GameObject InvButtons = GameObject.Find("Icons");
 
-        if (!InvButtons)
+        if (!InvButtons || !InventoryUI || !WoodText)
         {
-            Debug.Log("NO INVENTORY ICONS FOUND!!!!");
+            Debug.LogWarning("MISSING UI ELEMENTS!!!");
         }
         else
         {
@@ -56,13 +59,14 @@ public class InventoryManager : MonoBehaviour
                 i++;
             }
         }
+        InventoryUI.SetActive(false);
 
     }
     // Update is called once per frame
     void Update()
     {
         //this is for debug purposes
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.T))
         {
             AddWood(1);
             
@@ -70,13 +74,25 @@ public class InventoryManager : MonoBehaviour
 
 
 
-        ///open and closing inventoryUI
+        ///open and closing inventoryUI and slowing down time
         if (Input.GetKeyDown(inventory_open_key))
         {
-
+            
             InventoryUI.SetActive(!InventoryUI.activeSelf);
-        }
+            //if statement checking if time is already slowed down
+            if(Time.timeScale == MenuTime)
+            {
+                Time.timeScale = 1;
+            }
+            else
+            {
+                Time.timeScale = MenuTime;
 
+            }
+            //updating physics to match new timescale
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        }
+        
         UpdateInventoryIcons();
     }
 
@@ -188,15 +204,27 @@ public class InventoryManager : MonoBehaviour
 
     public void UseItem(ItemData item)
     {
+        
         switch (item.Name)
         {
+            
             case ("NewAxe"):
+                //every interaction an item can have is put here
+                //IsTouchingGM is set from the InteractableBehaviour script attached to every Interactable GameObject.
+                if (IsTouchingGm.name.Contains("tree"))
+                {
+                    AddWood(20);
+                    
+                    Destroy(IsTouchingGm.gameObject);
+                }
                 Debug.Log("Player swings axe as hard as they can... it breaks from the force.");
                 return;
 
             default:
+                
                 Debug.Log("item not recognized");
                 return;
         }
+        
     }
 }

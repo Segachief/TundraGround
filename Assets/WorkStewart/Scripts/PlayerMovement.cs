@@ -13,22 +13,58 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     Animator myAnimator;
     CapsuleCollider2D myCapsuleCollider;
+    float playerGravity;
+    InventoryManager inventoryManager;
     float startingGravity;
-
-
+    public Sprite spr;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myCapsuleCollider = GetComponent<CapsuleCollider2D>();
-        startingGravity = rb.gravityScale;
+        playerGravity = rb.gravityScale;
+        inventoryManager = FindFirstObjectByType<InventoryManager>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        
+
+        if (myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        {
+            rb.gravityScale = 0f;
+        }
+        else
+        {
+            // Decreases jump height in stages; scaling it per unit of wood
+            // may make it difficult to design obstacles around vs. having
+            // clear-cut jump heights.
+            if (inventoryManager.Wood < 10)
+            {
+                rb.gravityScale = 2f;
+            }
+            else if (inventoryManager.Wood >= 10)
+            {
+                rb.gravityScale = 3f;
+            }
+            else if (inventoryManager.Wood >= 20)
+            {
+                rb.gravityScale = 4f;
+            }
+        }
         Run();
         FlipSprite();
         ClimbLadder();
+
+        if (!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        {
+            myAnimator.SetBool("IsJumping", true);
+        }
+        else
+        {
+            myAnimator.SetBool("IsJumping", false);
+        }
+
     }
 
     void OnMove(InputValue value)
@@ -54,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = playerVelocity;
 
         bool hasHorizontalSpeed = Mathf.Abs(rb.linearVelocity.x) > Mathf.Epsilon;
-        if(hasHorizontalSpeed)
+        if(hasHorizontalSpeed && !myAnimator.GetBool("IsJumping"))
         {
             myAnimator.SetBool("isRunning", true);
         }
@@ -82,22 +118,27 @@ public class PlayerMovement : MonoBehaviour
     {
         if(myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
+            if(!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+            {
+                myAnimator.SetBool("isClimbing", true);
+            }
             // Prevents slide of player from gravity during climb
             // If we want the player to gradually slide down a tree, then this
             // can be removed or a check for tree/surface made to distinguish
-            rb.gravityScale = 0f;
             Vector2 climbVelocity = new Vector2(rb.linearVelocity.x, moveInput.y * climbSpeed);
             rb.linearVelocity = climbVelocity;
 
             // May be good to add an idle anim for being on a climbable surface
             // but not moving up or down; uses regular standing idle currently
             bool hasVerticalSpeed = Mathf.Abs(rb.linearVelocity.y) > Mathf.Epsilon;
-            myAnimator.SetBool("isClimbing", hasVerticalSpeed); 
+            myAnimator.SetBool("isClimbing", hasVerticalSpeed);
         }
         else
         {
-            rb.gravityScale = startingGravity;
             myAnimator.SetBool("isClimbing", false);
         }
     }
+
+
+
 }
