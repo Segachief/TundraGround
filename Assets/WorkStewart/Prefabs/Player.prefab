@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3387683299103734155}
   - component: {fileID: 7606541532150496207}
   - component: {fileID: 7653666990102078952}
+  - component: {fileID: 2078025332078373699}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -79,14 +80,14 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1569420229
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7894484093430313499, guid: 57a017ca57d09a240b8460aef9340ad3, type: 3}
+  m_Sprite: {fileID: -5667695541409424796, guid: 106e3e2124ade3d45906ddc0ec3d5bac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.52, y: 1.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -127,7 +128,7 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -148,8 +149,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.03, y: -0.1}
-  m_Size: {x: 0.48, y: 0.8}
+  m_Offset: {x: -0.03, y: 0.6}
+  m_Size: {x: 0.48, y: 1.2}
   m_Direction: 0
 --- !u!50 &3387683299103734155
 Rigidbody2D:
@@ -177,7 +178,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &7606541532150496207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,3 +223,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4
   jumpSpeed: 11
+  climbSpeed: 4
+  spr: {fileID: 3977877109775746578, guid: 9e1e492840a4738419f7c5068a7f0770, type: 3}
+--- !u!114 &2078025332078373699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5631616076712959541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e9ecdb5db3bf04a8d736075471ea0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axe: {fileID: 11400000, guid: 7afb287d89deb5a4bae3ee99e2e33c51, type: 2}
+  axebutton: 104
+  tree: {fileID: 0}

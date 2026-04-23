@@ -5,6 +5,7 @@ using UnityEngine;
 public class InteractableBehaviour : MonoBehaviour
 {
     private GameObject player;
+    public GameObject wood;
     private void Start()
     {
         player = GameObject.Find("Player");
@@ -30,9 +31,17 @@ public class InteractableBehaviour : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+
+
+    public void DestroyTree()
     {
         InventoryManager.instance.IsTouchingGm = null;
+        if (gameObject.name == "tree")
+        {
+            Instantiate(wood,gameObject.transform.position,Quaternion.identity);
+        }
+        
+        Destroy(this.gameObject);
     }
 }
 
