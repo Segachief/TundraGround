@@ -6,35 +6,41 @@ public class AxeSwingingScript : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public ItemData axe;
-    public KeyCode axebutton;
+    public KeyCode Axe_Button;
     Animator myAnimator;
-    public GameObject tree;
+    private bool IsAxeSwinging;
     // Update is called once per frame
     private void Awake()
     {
-        myAnimator = GetComponent<Animator>();
+        myAnimator = GetComponentInParent<Animator>();
     }
     void Update()
     {
-        if(Input.GetKeyDown(axebutton) && InventoryManager.instance.Inventory.Contains(axe))
+        IsAxeSwinging = myAnimator.GetBool("AxeSwing");
+
+        if(Input.GetKeyDown(Axe_Button) && InventoryManager.instance.Inventory.Contains(axe))
         {
             myAnimator.SetTrigger("AxeSwing");
-            if(InventoryManager.instance.IsTouchingGm == tree)
-            {
-                tree.GetComponent<InteractableBehaviour>().DestroyTree();
-            }
-
-        
-            
             
         }
-
+        
     }
 
-
-    private IEnumerator WaitForSeconds(float time)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "tree")
+        {
+            collision.gameObject.GetComponent<InteractableBehaviour>().DestroyTree();
+        }
+    }
 
-        yield return new WaitForSecondsRealtime(time);
+    public void EnableAxeHitbox()
+    {
+        GetComponent<BoxCollider2D>().enabled = true;
+    }
+
+    public void DisableAxeHitbox()
+    {
+        GetComponent<BoxCollider2D>().enabled = false;
     }
 }

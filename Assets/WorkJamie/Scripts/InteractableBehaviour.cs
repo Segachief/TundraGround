@@ -36,7 +36,7 @@ public class InteractableBehaviour : MonoBehaviour
     public void DestroyTree()
     {
         InventoryManager.instance.IsTouchingGm = null;
-        if (gameObject.name == "tree")
+        if (gameObject.tag == "tree")
         {
             Instantiate(wood,gameObject.transform.position,Quaternion.identity);
         }
