@@ -8,7 +8,7 @@ public class TrapScript : MonoBehaviour
     bool TrapActive;
     //Math Stuff
     float range = 0.2f;
-    float amp = 1; // how far
+    float amp = 0.6f; // how far
     float freq = 4f; // how fast
 
     //holds two sprites - active and non active trap.
@@ -63,7 +63,8 @@ public class TrapScript : MonoBehaviour
             x = Mathf.Round(x);
             x = x * range;
             trapped_object.transform.position = new Vector2(transform.position.x + x, trapped_position.y);
-            freq = freq + freq * 0.0035f;
+            freq = freq + freq * 0.05f * Time.deltaTime;
+            amp = amp + 0.3f * Time.deltaTime;
         }
 
         else
