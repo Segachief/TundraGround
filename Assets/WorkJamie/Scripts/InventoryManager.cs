@@ -1,4 +1,5 @@
 
+using JetBrains.Annotations;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -18,6 +19,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject IsTouchingGm;
     public static InventoryManager instance;
     public float MenuTime;
+    public GameObject Trap;
     void Awake()
     {
         //set instance
@@ -220,6 +222,12 @@ public class InventoryManager : MonoBehaviour
                 Debug.Log("Player swings axe as hard as they can... it breaks from the force.");
                 return;
 
+            case ("Trap"):
+                GameObject player = GameObject.Find("Player");
+                Vector3 vec = new Vector3(player.transform.GetChild(0).transform.position.x + player.transform.localScale.x * 1.5f, player.transform.GetChild(0).transform.position.y - 0.507f,0);
+                Instantiate(Trap,vec,Quaternion.identity);
+
+                return;
             default:
                 
                 Debug.Log("item not recognized");
