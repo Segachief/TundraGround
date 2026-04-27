@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     float playerGravity;
     InventoryManager inventoryManager;
     float startingGravity;
-
+    public Sprite spr;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        
+
         if (myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
             rb.gravityScale = 0f;
@@ -53,6 +55,16 @@ public class PlayerMovement : MonoBehaviour
         Run();
         FlipSprite();
         ClimbLadder();
+
+        if (!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        {
+            myAnimator.SetBool("IsJumping", true);
+        }
+        else
+        {
+            myAnimator.SetBool("IsJumping", false);
+        }
+
     }
 
     void OnMove(InputValue value)
@@ -78,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = playerVelocity;
 
         bool hasHorizontalSpeed = Mathf.Abs(rb.linearVelocity.x) > Mathf.Epsilon;
-        if(hasHorizontalSpeed)
+        if(hasHorizontalSpeed && !myAnimator.GetBool("IsJumping"))
         {
             myAnimator.SetBool("isRunning", true);
         }
@@ -106,6 +118,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if(myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
+            if(!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+            {
+                myAnimator.SetBool("isClimbing", true);
+            }
             // Prevents slide of player from gravity during climb
             // If we want the player to gradually slide down a tree, then this
             // can be removed or a check for tree/surface made to distinguish
@@ -122,4 +138,7 @@ public class PlayerMovement : MonoBehaviour
             myAnimator.SetBool("isClimbing", false);
         }
     }
+
+
+
 }

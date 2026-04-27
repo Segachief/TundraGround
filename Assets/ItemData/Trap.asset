@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Trap
   m_EditorClassIdentifier: 
   Name: Trap
-  WoodRequirement: 6
+  WoodRequirement: 2
   icon: {fileID: 553103467783823420, guid: 9cd88d4bacceb9b4b91d601281755edd, type: 3}
