@@ -36,8 +36,15 @@ public class LevelManager : MonoBehaviour
         audioManager.StartFadeMusicIn(currentScene);
     }
 
+    public void LoadOptions()
+    {
+        currentScene = "Options";
+        ScreenFader.Instance.FadeToScene(currentScene);
+    }
+
     public void LoadControls()
     {
+        currentScene = "Controls";
         ScreenFader.Instance.FadeToScene("Controls");
     }
     
