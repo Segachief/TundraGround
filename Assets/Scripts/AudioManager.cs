@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource levelComplete;
     [SerializeField] private float fadeTimerInterval = 0.001f;
     [SerializeField] float musicVolume;
+    [SerializeField] float sfxVolume;
 
     private string songName = "";
     private bool titlePlaying = false;
@@ -80,6 +81,18 @@ public class AudioManager : MonoBehaviour
         {
             // Loads previously set audio setting
             PlayerPrefs.SetFloat("musicVolume", musicVolume);
+        }
+
+        if(!PlayerPrefs.HasKey("sfxVolume"))
+        {
+            // Default if there is no saved audio preference
+            PlayerPrefs.SetFloat("sfxVolume", 0.1f);
+            sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
+        }
+        else
+        {
+            // Loads previously set audio setting
+            PlayerPrefs.SetFloat("sfxVolume", sfxVolume);
         }
     }
 
@@ -200,7 +213,7 @@ public class AudioManager : MonoBehaviour
             switch(songName)
             {
                 case "Title":
-                while (title.volume < 0.1f)
+                while (title.volume < musicVolume)
                 {
                     title.volume += 0.0001f;
                     yield return new WaitForSeconds(fadeTimerInterval);
@@ -208,7 +221,7 @@ public class AudioManager : MonoBehaviour
                 break;
 
                 case "MainMenu":
-                while (mainMenu.volume < 0.1f)
+                while (mainMenu.volume < musicVolume)
                 {
                     mainMenu.volume += 0.0001f;
                     yield return new WaitForSeconds(fadeTimerInterval);
@@ -217,7 +230,7 @@ public class AudioManager : MonoBehaviour
 
                 case "Level1":
                 case "DebugTommy":
-                while (level1.volume < 0.1f)
+                while (level1.volume < musicVolume)
                 {
                     level1.volume += 0.0001f;
                     yield return new WaitForSeconds(fadeTimerInterval);
@@ -226,7 +239,7 @@ public class AudioManager : MonoBehaviour
 
                 case "Level2":
                 case "DebugMichael":
-                while (level2.volume < 0.1f)
+                while (level2.volume < musicVolume)
                 {
                     level2.volume += 0.0001f;
                     yield return new WaitForSeconds(fadeTimerInterval);
@@ -235,7 +248,7 @@ public class AudioManager : MonoBehaviour
 
                 case "Level3":
                 case "DebugCalum":
-                while (level3.volume < 0.1f)
+                while (level3.volume < musicVolume)
                 {
                     level3.volume += 0.0001f;
                     yield return new WaitForSeconds(fadeTimerInterval);
@@ -244,7 +257,7 @@ public class AudioManager : MonoBehaviour
 
                 case "Level4":
                 case "DebugJamie":
-                while (level4.volume < 0.1f)
+                while (level4.volume < musicVolume)
                 {
                     level4.volume += 0.0001f;
                     yield return new WaitForSeconds(fadeTimerInterval);
@@ -253,7 +266,7 @@ public class AudioManager : MonoBehaviour
 
                 case "Level5":
                 case "DebugStewart":
-                while (level5.volume < 0.1f)
+                while (level5.volume < musicVolume)
                 {
                     level5.volume += 0.0001f;
                     yield return new WaitForSeconds(fadeTimerInterval);
@@ -261,7 +274,7 @@ public class AudioManager : MonoBehaviour
                 break;
 
                 case "GameOver":
-                while (gameOver.volume < 0.1f)
+                while (gameOver.volume < musicVolume)
                 {
                     gameOver.volume += 0.0001f;
                     yield return new WaitForSeconds(fadeTimerInterval);
@@ -269,7 +282,7 @@ public class AudioManager : MonoBehaviour
                 break;
 
                 case "LevelComplete":
-                while (levelComplete.volume < 0.1f)
+                while (levelComplete.volume < musicVolume)
                 {
                     levelComplete.volume += 0.0001f;
                     yield return new WaitForSeconds(fadeTimerInterval);
@@ -282,7 +295,7 @@ public class AudioManager : MonoBehaviour
             switch(songName)
             {
                 case "Title":
-                while (title.volume < 0)
+                while (title.volume > 0)
                 {
                     title.volume -= 0.001f;
                     yield return new WaitForSeconds(fadeTimerInterval);

@@ -689,7 +689,7 @@ GameObject:
   - component: {fileID: 236624175}
   - component: {fileID: 236624174}
   m_Layer: 5
-  m_Name: Brightness (Text)
+  m_Name: SFX (Text)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -734,7 +734,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Brightness
+  m_text: SFX
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 399986269b0b8ac48bde26f4e7ffb6c2, type: 2}
   m_sharedMaterial: {fileID: 29976992627210901, guid: 399986269b0b8ac48bde26f4e7ffb6c2, type: 2}
@@ -1897,7 +1897,7 @@ GameObject:
   - component: {fileID: 831817432}
   - component: {fileID: 831817431}
   m_Layer: 5
-  m_Name: Audio (Text)
+  m_Name: Music (Text)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1942,7 +1942,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Audio
+  m_text: Music
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 399986269b0b8ac48bde26f4e7ffb6c2, type: 2}
   m_sharedMaterial: {fileID: 29976992627210901, guid: 399986269b0b8ac48bde26f4e7ffb6c2, type: 2}
@@ -2804,7 +2804,7 @@ GameObject:
   - component: {fileID: 1194662213}
   - component: {fileID: 1194662212}
   m_Layer: 5
-  m_Name: Audio (Button)
+  m_Name: Music (Button)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3134,8 +3134,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1324486257}
   - component: {fileID: 1324486258}
+  - component: {fileID: 1324486259}
   m_Layer: 5
-  m_Name: Brightness (Slider)
+  m_Name: SFX (Slider)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3213,7 +3214,33 @@ MonoBehaviour:
   m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1324486259}
+        m_TargetAssemblyTypeName: OptionsManager, Assembly-CSharp
+        m_MethodName: ChangeMusicVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1324486259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324486256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5f08bfbeb77e94ea36fdfa12d32134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicVolumeSlider: {fileID: 1324486258}
+  sfxVolumeSlider: {fileID: 0}
 --- !u!1 &1340569563
 GameObject:
   m_ObjectHideFlags: 0
@@ -5011,7 +5038,7 @@ GameObject:
   - component: {fileID: 1890415084}
   - component: {fileID: 1890415085}
   m_Layer: 5
-  m_Name: Audio (Slider)
+  m_Name: Music (Slider)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5086,7 +5113,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.1
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -5115,6 +5142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicVolumeSlider: {fileID: 1890415084}
+  sfxVolumeSlider: {fileID: 0}
 --- !u!1 &1923536463
 GameObject:
   m_ObjectHideFlags: 0
@@ -10036,7 +10064,7 @@ GameObject:
   - component: {fileID: 1933434539}
   - component: {fileID: 1933434538}
   m_Layer: 5
-  m_Name: Brightness (Button)
+  m_Name: SFX (Button)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

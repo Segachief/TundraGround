@@ -46,7 +46,7 @@ public class LevelManager : MonoBehaviour
     {
         currentScene = "Controls";
         ScreenFader.Instance.FadeToScene("Controls");
-    }
+    }    
     
     public void LoadLevel1()
     {

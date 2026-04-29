@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class OptionsManager : MonoBehaviour
 {
     [SerializeField] public Slider musicVolumeSlider;
+    [SerializeField] public Slider sfxVolumeSlider;
 
     void Start()
     {
@@ -13,11 +14,22 @@ public class OptionsManager : MonoBehaviour
     public void ChangeMusicVolume()
     {
         AudioListener.volume = musicVolumeSlider.value;
-        Save();
+        SaveMusic();
     }
 
-    private void Save()
+    public void ChangeSFXVolume()
+    {
+        AudioListener.volume = sfxVolumeSlider.value;
+        SaveSFX();
+    }
+
+    private void SaveMusic()
     {
         PlayerPrefs.SetFloat("musicVolume", musicVolumeSlider.value);
+    }
+
+    private void SaveSFX()
+    {
+        PlayerPrefs.SetFloat("sfxVolume", sfxVolumeSlider.value);
     }
 }
