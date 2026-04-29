@@ -757,7 +757,7 @@ MonoBehaviour:
   gameOver: {fileID: 1052122495}
   levelComplete: {fileID: 424049726}
   fadeTimerInterval: 0.001
-  volumeSlider: {fileID: 0}
+  musicVolume: 0.1
   playerAttack: {fileID: 971917021}
   bearAttack: {fileID: 1744003491}
   bearAttackClips:
