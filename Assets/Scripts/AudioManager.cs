@@ -15,9 +15,18 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource level5;
     [SerializeField] private AudioSource gameOver;
     [SerializeField] private AudioSource levelComplete;
+
+    [Header("SFX")]
+    [SerializeField] private AudioSource playerAttack;
+    [SerializeField] private AudioSource menuChoiceUI;
+    [SerializeField] private AudioSource bearAttack;
+    [SerializeField] private AudioClip[] bearAttackClips;
+    [SerializeField] private AudioSource openCraftingUI;
+    [SerializeField] private AudioSource closeCraftingUI;
+
     [SerializeField] private float fadeTimerInterval = 0.001f;
-    public float musicVolume = 0.5f;
-    public float sfxVolume = 0.5f;
+    public float musicVolume = 0.1f;
+    public float sfxVolume = 0.1f;
 
     private string songName = "";
     private bool titlePlaying = false;
@@ -30,19 +39,7 @@ public class AudioManager : MonoBehaviour
     private bool gameOverPlaying = false;
     private bool levelCompletePlaying = false;
 
-    // SFX (add as needed)
-    [Header("PlayerAttack")]
-    [SerializeField] private AudioSource playerAttack;
 
-    // In this, I've set up a 'clips' variable that can be used to
-    // play the SFX with randomised pitches, method at the bottom
-    [Header("BearAttack")]
-    [SerializeField] private AudioSource bearAttack;
-    [SerializeField] private AudioClip[] bearAttackClips;
-
-    [Header("CraftingUI")]
-    [SerializeField] private AudioSource openCraftingUI;
-    [SerializeField] private AudioSource closeCraftingUI;
 
     // Note: This object is intended to be used as a Singleton.
     // That means it's generated once, and then kept alive (not destroyed)
@@ -110,12 +107,24 @@ public class AudioManager : MonoBehaviour
         levelComplete.Stop(); levelCompletePlaying = false;
     }
 
+    public void UpdateSFXVolume(float newSFXVolume)
+    {
+        playerAttack.volume = newSFXVolume;
+        menuChoiceUI.volume = newSFXVolume;
+    }
+
+    public void MenuButtonSFX()
+    {
+        menuChoiceUI.Play();
+        menuChoiceUI.volume = sfxVolume;
+    }
+
     public void StartTitleMusic()
     {
         if (!titlePlaying)
         {
             title.Play(); titlePlaying = true;
-            title.volume = title.volume * musicVolume;
+            title.volume = musicVolume;
         }
     }
 
@@ -124,7 +133,7 @@ public class AudioManager : MonoBehaviour
         if (!mainMenuPlaying)
         {
             mainMenu.Play(); mainMenuPlaying = true;
-            mainMenu.volume = mainMenu.volume * musicVolume;
+            mainMenu.volume = musicVolume;
         }
     }
 

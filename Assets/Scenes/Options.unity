@@ -1299,7 +1299,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &549796687
 Transform:
   m_ObjectHideFlags: 0
@@ -1327,8 +1327,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 6b80828c8bc0b984684a580c5e87037d, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3368,8 +3368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5f08bfbeb77e94ea36fdfa12d32134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicVolumeSlider: {fileID: 1324486258}
-  sfxVolumeSlider: {fileID: 0}
+  musicVolumeSlider: {fileID: 1890415084}
+  sfxVolumeSlider: {fileID: 1324486258}
   audioManager: {fileID: 0}
 --- !u!1 &1340569563
 GameObject:
@@ -5016,18 +5016,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 549796688}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1613702635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5285,7 +5273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicVolumeSlider: {fileID: 1890415084}
-  sfxVolumeSlider: {fileID: 0}
+  sfxVolumeSlider: {fileID: 1324486258}
   audioManager: {fileID: 0}
 --- !u!1 &1923536463
 GameObject:

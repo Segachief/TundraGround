@@ -38,6 +38,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadOptions()
     {
+        audioManager.MenuButtonSFX();
         currentScene = "Options";
         ScreenFader.Instance.FadeToScene(currentScene);
     }
