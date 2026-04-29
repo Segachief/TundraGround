@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource gameOver;
     [SerializeField] private AudioSource levelComplete;
     [SerializeField] private float fadeTimerInterval = 0.001f;
+    [SerializeField] Slider volumeSlider;
 
     private string songName = "";
     private bool titlePlaying = false;
@@ -63,6 +65,19 @@ public class AudioManager : MonoBehaviour
         else
         {
             Destroy (this.gameObject);
+        }
+    }
+
+    void start()
+    {
+        if(PlayerPrefs.HasKey("musicVolume"))
+        {
+            PlayerPrefs.SetFloat("musicVolume", 1);
+            Load();
+        }
+        else
+        {
+            Load();
         }
     }
 
@@ -342,6 +357,22 @@ public class AudioManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void ChangeVolume()
+    {
+        AudioListener.volume = volumeSlider.value;
+        Save();
+    }
+
+    private void Load()
+    {
+        volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+    }
+
+    private void Save()
+    {
+        PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
     }
 
     // This method gives the option to play SFX with a random pitch
