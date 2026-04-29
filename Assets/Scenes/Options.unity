@@ -5086,13 +5086,13 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.108
+  m_Value: 0.1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1890415085}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: ChangeVolume
+        m_TargetAssemblyTypeName: OptionsManager, Assembly-CSharp
+        m_MethodName: ChangeMusicVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5111,25 +5111,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1890415082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84c30cd00aad2ab438dbf8c05876ab8e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a5f08bfbeb77e94ea36fdfa12d32134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: {fileID: 0}
-  mainMenu: {fileID: 0}
-  level1: {fileID: 0}
-  level2: {fileID: 0}
-  level3: {fileID: 0}
-  level4: {fileID: 0}
-  level5: {fileID: 0}
-  gameOver: {fileID: 0}
-  levelComplete: {fileID: 0}
-  fadeTimerInterval: 0.001
-  volumeSlider: {fileID: 1890415084}
-  playerAttack: {fileID: 0}
-  bearAttack: {fileID: 0}
-  bearAttackClips: []
-  openCraftingUI: {fileID: 0}
-  closeCraftingUI: {fileID: 0}
+  musicVolumeSlider: {fileID: 1890415084}
 --- !u!1 &1923536463
 GameObject:
   m_ObjectHideFlags: 0

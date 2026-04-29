@@ -16,7 +16,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource gameOver;
     [SerializeField] private AudioSource levelComplete;
     [SerializeField] private float fadeTimerInterval = 0.001f;
-    [SerializeField] Slider volumeSlider;
+    [SerializeField] float musicVolume;
 
     private string songName = "";
     private bool titlePlaying = false;
@@ -68,16 +68,18 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    void start()
+    void Start()
     {
-        if(PlayerPrefs.HasKey("musicVolume"))
+        if(!PlayerPrefs.HasKey("musicVolume"))
         {
-            PlayerPrefs.SetFloat("musicVolume", 1);
-            Load();
+            // Default if there is no saved audio preference
+            PlayerPrefs.SetFloat("musicVolume", 0.1f);
+            musicVolume = PlayerPrefs.GetFloat("musicVolume");
         }
         else
         {
-            Load();
+            // Loads previously set audio setting
+            PlayerPrefs.SetFloat("musicVolume", musicVolume);
         }
     }
 
@@ -100,7 +102,7 @@ public class AudioManager : MonoBehaviour
         if (!titlePlaying)
         {
             title.Play(); titlePlaying = true;
-            title.volume = 0.01f;
+            title.volume = title.volume * musicVolume;
         }
     }
 
@@ -109,7 +111,7 @@ public class AudioManager : MonoBehaviour
         if (!mainMenuPlaying)
         {
             mainMenu.Play(); mainMenuPlaying = true;
-            mainMenu.volume = 0.01f;
+            mainMenu.volume = mainMenu.volume * musicVolume;
         }
     }
 
@@ -118,7 +120,7 @@ public class AudioManager : MonoBehaviour
         if (!gameOverPlaying)
         {
             gameOver.Play(); gameOverPlaying = true;
-            gameOver.volume = 0.01f;
+            gameOver.volume = gameOver.volume * musicVolume;
         }
     }
 
@@ -127,7 +129,7 @@ public class AudioManager : MonoBehaviour
         if (!levelCompletePlaying)
         {
             levelComplete.Play(); levelCompletePlaying = true;
-            levelComplete.volume = 0.01f;
+            levelComplete.volume = levelComplete.volume * musicVolume;
         }
     }
 
@@ -136,7 +138,7 @@ public class AudioManager : MonoBehaviour
         if (!level1Playing)
         {
             level1.Play(); level1Playing = true;
-            level1.volume = 0.01f;
+            level1.volume = level1.volume * musicVolume;
         }
     }
 
@@ -145,7 +147,7 @@ public class AudioManager : MonoBehaviour
         if (!level2Playing)
         {
             level2.Play(); level2Playing = true;
-            level2.volume = 0.01f;
+            level2.volume = level2.volume * musicVolume;
         }
     }
 
@@ -154,7 +156,7 @@ public class AudioManager : MonoBehaviour
         if (!level3Playing)
         {
             level3.Play(); level3Playing = true;
-            level3.volume = 0.01f;
+            level3.volume = level3.volume * musicVolume;
         }
     }
 
@@ -163,7 +165,7 @@ public class AudioManager : MonoBehaviour
         if (!level4Playing)
         {
             level4.Play(); level4Playing = true;
-            level4.volume = 0.01f;
+            level4.volume = level4.volume * musicVolume;
         }
     }
 
@@ -172,7 +174,7 @@ public class AudioManager : MonoBehaviour
         if (!level5Playing)
         {
             level5.Play(); level5Playing = true;
-            level5.volume = 0.01f;
+            level5.volume = level5.volume * musicVolume;
         }
     }
 
@@ -357,22 +359,6 @@ public class AudioManager : MonoBehaviour
                 break;
             }
         }
-    }
-
-    public void ChangeVolume()
-    {
-        AudioListener.volume = volumeSlider.value;
-        Save();
-    }
-
-    private void Load()
-    {
-        volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
-    }
-
-    private void Save()
-    {
-        PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
     }
 
     // This method gives the option to play SFX with a random pitch
