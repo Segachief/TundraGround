@@ -16,8 +16,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource gameOver;
     [SerializeField] private AudioSource levelComplete;
     [SerializeField] private float fadeTimerInterval = 0.001f;
-    [SerializeField] float musicVolume;
-    [SerializeField] float sfxVolume;
+    public float musicVolume = 0.5f;
+    public float sfxVolume = 0.5f;
 
     private string songName = "";
     private bool titlePlaying = false;
