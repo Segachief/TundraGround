@@ -127,13 +127,11 @@ public class AudioManager : MonoBehaviour
         if (!titlePlaying)
         {
             title.Play(); titlePlaying = true;
-            title.volume = musicVolume;
         }
     }
 
     public void StartMainMenuMusic()
     {
-        Debug.Log("MainMenuPlaying StartMusic: " + mainMenuPlaying);
         if (!mainMenuPlaying)
         {
             mainMenu.Play(); mainMenuPlaying = true;
@@ -145,7 +143,6 @@ public class AudioManager : MonoBehaviour
         if (!gameOverPlaying)
         {
             gameOver.Play(); gameOverPlaying = true;
-            gameOver.volume = gameOver.volume * musicVolume;
         }
     }
 
@@ -154,7 +151,6 @@ public class AudioManager : MonoBehaviour
         if (!levelCompletePlaying)
         {
             levelComplete.Play(); levelCompletePlaying = true;
-            levelComplete.volume = levelComplete.volume * musicVolume;
         }
     }
 
@@ -163,7 +159,6 @@ public class AudioManager : MonoBehaviour
         if (!level1Playing)
         {
             level1.Play(); level1Playing = true;
-            level1.volume = level1.volume * musicVolume;
         }
     }
 
@@ -172,7 +167,6 @@ public class AudioManager : MonoBehaviour
         if (!level2Playing)
         {
             level2.Play(); level2Playing = true;
-            level2.volume = level2.volume * musicVolume;
         }
     }
 
@@ -181,7 +175,6 @@ public class AudioManager : MonoBehaviour
         if (!level3Playing)
         {
             level3.Play(); level3Playing = true;
-            level3.volume = level3.volume * musicVolume;
         }
     }
 
@@ -190,7 +183,6 @@ public class AudioManager : MonoBehaviour
         if (!level4Playing)
         {
             level4.Play(); level4Playing = true;
-            level4.volume = level4.volume * musicVolume;
         }
     }
 
@@ -199,7 +191,6 @@ public class AudioManager : MonoBehaviour
         if (!level5Playing)
         {
             level5.Play(); level5Playing = true;
-            level5.volume = level5.volume * musicVolume;
         }
     }
 

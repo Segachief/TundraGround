@@ -16,7 +16,6 @@ public class LevelManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        Debug.Log("MainMenuPlaying LevelManager: " + audioManager.mainMenuPlaying);
         if (!audioManager.mainMenuPlaying)
         {
             audioManager.StartFadeMusicOut(currentScene);
@@ -25,7 +24,6 @@ public class LevelManager : MonoBehaviour
         currentScene = "MainMenu";
         ScreenFader.Instance.FadeToScene(currentScene);
 
-        Debug.Log("MainMenuPlaying LevelManager2: " + audioManager.mainMenuPlaying);
         if (!audioManager.mainMenuPlaying)
         {
             audioManager.StopMusic();
@@ -35,9 +33,8 @@ public class LevelManager : MonoBehaviour
     }
 
     public void LoadGameOver()
-    {
+    {    
         audioManager.StartFadeMusicOut(currentScene);
-        //scoreKeeper.SetHighScore();
         
         currentScene = "GameOver";
         ScreenFader.Instance.FadeToScene(currentScene);
@@ -62,8 +59,6 @@ public class LevelManager : MonoBehaviour
     public void LoadLevel1()
     {
         audioManager.StartFadeMusicOut(currentScene);
-        //scoreKeeper.SetHighScore();
-        //scoreKeeper.ResetScore();
         
         currentScene = "Level1";
         ScreenFader.Instance.FadeToScene(currentScene);
@@ -75,8 +70,6 @@ public class LevelManager : MonoBehaviour
     public void LoadLevel2()
     {
         audioManager.StartFadeMusicOut(currentScene);
-        //scoreKeeper.SetHighScore();
-        //scoreKeeper.ResetScore();
         
         currentScene = "Level2";
         ScreenFader.Instance.FadeToScene(currentScene);
@@ -88,8 +81,6 @@ public class LevelManager : MonoBehaviour
     public void LoadLevel3()
     {
         audioManager.StartFadeMusicOut(currentScene);
-        //scoreKeeper.SetHighScore();
-        //scoreKeeper.ResetScore();
         
         currentScene = "Level3";
         ScreenFader.Instance.FadeToScene(currentScene);
@@ -101,8 +92,6 @@ public class LevelManager : MonoBehaviour
     public void LoadLevel4()
     {
         audioManager.StartFadeMusicOut(currentScene);
-        //scoreKeeper.SetHighScore();
-        //scoreKeeper.ResetScore();
         
         currentScene = "Level4";
         ScreenFader.Instance.FadeToScene(currentScene);
@@ -114,8 +103,6 @@ public class LevelManager : MonoBehaviour
     public void LoadLevel5()
     {
         audioManager.StartFadeMusicOut(currentScene);
-        //scoreKeeper.SetHighScore();
-        //scoreKeeper.ResetScore();
         
         currentScene = "Level5";
         ScreenFader.Instance.FadeToScene(currentScene);
@@ -127,8 +114,6 @@ public class LevelManager : MonoBehaviour
     public void LoadDebugCalum()
     {
         audioManager.StartFadeMusicOut(currentScene);
-        //scoreKeeper.SetHighScore();
-        //scoreKeeper.ResetScore();
         
         currentScene = "DebugCalum";
         ScreenFader.Instance.FadeToScene(currentScene);
@@ -140,8 +125,6 @@ public class LevelManager : MonoBehaviour
     public void LoadDebugJamie()
     {
         audioManager.StartFadeMusicOut(currentScene);
-        //scoreKeeper.SetHighScore();
-        //scoreKeeper.ResetScore();
         
         currentScene = "DebugJamie";
         ScreenFader.Instance.FadeToScene(currentScene);
@@ -153,8 +136,6 @@ public class LevelManager : MonoBehaviour
     public void LoadDebugMichael()
     {
         audioManager.StartFadeMusicOut(currentScene);
-        //scoreKeeper.SetHighScore();
-        //scoreKeeper.ResetScore();
         
         currentScene = "DebugMichael";
         ScreenFader.Instance.FadeToScene(currentScene);
@@ -166,8 +147,6 @@ public class LevelManager : MonoBehaviour
     public void LoadDebugStewart()
     {
         audioManager.StartFadeMusicOut(currentScene);
-        //scoreKeeper.SetHighScore();
-        //scoreKeeper.ResetScore();
         
         currentScene = "DebugStewart";
         ScreenFader.Instance.FadeToScene(currentScene);
@@ -179,8 +158,6 @@ public class LevelManager : MonoBehaviour
     public void LoadDebugTommy()
     {
         audioManager.StartFadeMusicOut(currentScene);
-        //scoreKeeper.SetHighScore();
-        //scoreKeeper.ResetScore();
         
         currentScene = "DebugTommy";
         ScreenFader.Instance.FadeToScene(currentScene);
