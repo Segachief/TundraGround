@@ -898,7 +898,7 @@ MonoBehaviour:
   gameOver: {fileID: 1052122495}
   levelComplete: {fileID: 424049726}
   playerAttack: {fileID: 971917021}
-  menuChoiceUI: {fileID: 0}
+  menuChoiceUI: {fileID: 245475871}
   bearAttack: {fileID: 1744003491}
   bearAttackClips:
   - {fileID: 8300000, guid: aa6009850448d744fbc15fae8c471170, type: 3}
