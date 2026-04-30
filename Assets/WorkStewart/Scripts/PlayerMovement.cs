@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
         FlipSprite();
         ClimbLadder();
 
+        //this part was written by Jamie --------------------
         if (!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
             myAnimator.SetBool("IsJumping", true);
@@ -64,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
         {
             myAnimator.SetBool("IsJumping", false);
         }
-
+        //--------------------------------------------------
     }
 
     void OnMove(InputValue value)
