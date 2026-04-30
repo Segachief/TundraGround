@@ -29,15 +29,15 @@ public class AudioManager : MonoBehaviour
     public float sfxVolume = 0.1f;
 
     private string songName = "";
-    private bool titlePlaying = false;
-    private bool mainMenuPlaying = false;
-    private bool level1Playing = false;
-    private bool level2Playing = false;
-    private bool level3Playing = false;
-    private bool level4Playing = false;
-    private bool level5Playing = false;
-    private bool gameOverPlaying = false;
-    private bool levelCompletePlaying = false;
+    public bool titlePlaying = false;
+    public bool mainMenuPlaying = false;
+    public bool level1Playing = false;
+    public bool level2Playing = false;
+    public bool level3Playing = false;
+    public bool level4Playing = false;
+    public bool level5Playing = false;
+    public bool gameOverPlaying = false;
+    public bool levelCompletePlaying = false;
 
 
 
@@ -59,6 +59,9 @@ public class AudioManager : MonoBehaviour
         {
             DontDestroyOnLoad(this);
             AudioManager.instance = this;
+
+            //Update to Title when moving Audio Manager to title screen
+            mainMenu.Play(); mainMenuPlaying = true;
         }
         else
         {
@@ -130,10 +133,10 @@ public class AudioManager : MonoBehaviour
 
     public void StartMainMenuMusic()
     {
+        Debug.Log("MainMenuPlaying StartMusic: " + mainMenuPlaying);
         if (!mainMenuPlaying)
         {
             mainMenu.Play(); mainMenuPlaying = true;
-            mainMenu.volume = musicVolume;
         }
     }
 
@@ -306,78 +309,87 @@ public class AudioManager : MonoBehaviour
                 case "Title":
                 while (title.volume > 0)
                 {
-                    title.volume -= 0.001f;
+                    title.volume -= 0.0001f;
                     yield return new WaitForSeconds(fadeTimerInterval);
                 }
+                title.Stop(); titlePlaying = false;
                 break;
 
                 case "MainMenu":
                 while (mainMenu.volume > 0)
                 {
-                    mainMenu.volume -= 0.001f;
+                    mainMenu.volume -= 0.0001f;
                     yield return new WaitForSeconds(fadeTimerInterval);
                 }
+                mainMenu.Stop(); mainMenuPlaying = false;
                 break;
 
                 case "Level1":
                 case "DebugTommy":
                 while (level1.volume > 0)
                 {
-                    level1.volume -= 0.001f;
+                    level1.volume -= 0.0001f;
                     yield return new WaitForSeconds(fadeTimerInterval);
                 }
+                level1.Stop(); level1Playing = false;
                 break;
 
                 case "Level2":
                 case "DebugMichael":
                 while (level2.volume > 0)
                 {
-                    level2.volume -= 0.001f;
+                    level2.volume -= 0.0001f;
                     yield return new WaitForSeconds(fadeTimerInterval);
-                }
+                }        
+                level2.Stop(); level2Playing = false;
                 break;
 
                 case "Level3":
                 case "DebugCalum":
                 while (level3.volume > 0)
                 {
-                    level3.volume -= 0.001f;
+                    level3.volume -= 0.0001f;
                     yield return new WaitForSeconds(fadeTimerInterval);
                 }
+                level3.Stop(); level3Playing = false;
                 break;
 
                 case "Level4":
                 case "DebugJamie":
                 while (level4.volume > 0)
                 {
-                    level4.volume -= 0.001f;
+                    level4.volume -= 0.0001f;
                     yield return new WaitForSeconds(fadeTimerInterval);
-                }
+                }        
+                level4.Stop(); level4Playing = false;
                 break;
 
                 case "Level5":
                 case "DebugStewart":
                 while (level5.volume > 0)
                 {
-                    level5.volume -= 0.001f;
+                    level5.volume -= 0.0001f;
                     yield return new WaitForSeconds(fadeTimerInterval);
-                }
+                }   
+                level5.Stop(); level5Playing = false;
                 break;
 
                 case "GameOver":
                 while (gameOver.volume > 0)
                 {
-                    gameOver.volume -= 0.001f;
+                    gameOver.volume -= 0.0001f;
                     yield return new WaitForSeconds(fadeTimerInterval);
-                }
+                }            
+                gameOver.Stop(); gameOverPlaying = false;
                 break;
 
                 case "LevelComplete":
                 while (levelComplete.volume > 0)
                 {
-                    levelComplete.volume -= 0.001f;
+                    levelComplete.volume -= 0.0001f;
                     yield return new WaitForSeconds(fadeTimerInterval);
                 }
+                levelComplete.Stop(); levelCompletePlaying = false;
                 break;
             }
         }

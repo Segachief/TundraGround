@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,13 +16,22 @@ public class LevelManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        audioManager.StartFadeMusicOut(currentScene);
+        Debug.Log("MainMenuPlaying LevelManager: " + audioManager.mainMenuPlaying);
+        if (!audioManager.mainMenuPlaying)
+        {
+            audioManager.StartFadeMusicOut(currentScene);
+        }
 
         currentScene = "MainMenu";
         ScreenFader.Instance.FadeToScene(currentScene);
-        audioManager.StopMusic();
-        audioManager.StartMainMenuMusic();
-        audioManager.StartFadeMusicIn(currentScene);
+
+        Debug.Log("MainMenuPlaying LevelManager2: " + audioManager.mainMenuPlaying);
+        if (!audioManager.mainMenuPlaying)
+        {
+            audioManager.StopMusic();
+            audioManager.StartMainMenuMusic();
+            audioManager.StartFadeMusicIn(currentScene);
+        }
     }
 
     public void LoadGameOver()
