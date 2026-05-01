@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+
 
         if (myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
@@ -54,14 +54,8 @@ public class PlayerMovement : MonoBehaviour
         FlipSprite();
         ClimbLadder();
 
-        if (!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
-        {
-            myAnimator.SetBool("IsJumping", true);
-        }
-        else
-        {
-            myAnimator.SetBool("IsJumping", false);
-        }
+        CheckForAirTime();
+
 
     }
 
@@ -74,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Checks if the player is touching the Ground layer
         // If not, prevents the use of Jump
-        if(value.isPressed && 
+        if (value.isPressed &&
             myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))
             || myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
@@ -88,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = playerVelocity;
 
         bool hasHorizontalSpeed = Mathf.Abs(rb.linearVelocity.x) > Mathf.Epsilon;
-        if(hasHorizontalSpeed && !myAnimator.GetBool("IsJumping"))
+        if (hasHorizontalSpeed && !myAnimator.GetBool("IsJumping"))
         {
             myAnimator.SetBool("isRunning", true);
         }
@@ -105,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
         // Movement may not always reach absolute 0 so this is a way to cover those
         // fringe cases (for example, value is within deadzone on a controller stick).
         bool hasHorizontalSpeed = Mathf.Abs(rb.linearVelocity.x) > Mathf.Epsilon;
-        if(hasHorizontalSpeed)
+        if (hasHorizontalSpeed)
         {
             // Flips the sprite based on its velocity x movement
             transform.localScale = new Vector2(Mathf.Sign(rb.linearVelocity.x), 1f);
@@ -114,9 +108,9 @@ public class PlayerMovement : MonoBehaviour
 
     void ClimbLadder()
     {
-        if(myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        if (myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
-            if(!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+            if (!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
             {
                 myAnimator.SetBool("isClimbing", true);
             }
@@ -137,6 +131,31 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void CheckForAirTime()
+    {
+        if (!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        {
+            myAnimator.SetBool("IsJumping", true);
+        }
+        else
+        {
+            myAnimator.SetBool("IsJumping", false);
+        }
 
+        if (rb.linearVelocityY !=0 && PlayerBangedHead())
+        {
+            myAnimator.SetBool("IsJumping", true);
+        }
+    }
 
+    bool PlayerBangedHead()
+    {
+        Vector2 player_centre = new Vector2(transform.position.x, transform.position.y + 1);
+        bool hit = Physics2D.Raycast(player_centre, transform.up, 1f,LayerMask.GetMask("Ground"));
+        if (hit)
+        {
+            return true;
+        }
+        return false;
+    }
 }
