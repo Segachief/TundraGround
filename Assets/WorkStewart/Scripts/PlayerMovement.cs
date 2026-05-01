@@ -15,8 +15,11 @@ public class PlayerMovement : MonoBehaviour
     InventoryManager inventoryManager;
     float startingGravity;
     public Sprite spr;
+
+    PlayerInput playerInput;
     void Start()
     {
+        playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myCapsuleCollider = GetComponent<CapsuleCollider2D>();
@@ -131,8 +134,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    //Both of these functions were made by Jamie - 
     void CheckForAirTime()
     {
+        //Animator Stuff
         if (!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
             myAnimator.SetBool("IsJumping", true);
@@ -142,20 +147,25 @@ public class PlayerMovement : MonoBehaviour
             myAnimator.SetBool("IsJumping", false);
         }
 
-        if (rb.linearVelocityY !=0 && PlayerBangedHead())
+        if (rb.linearVelocityY !=0 && RayFromPlayerCentre(transform.up))
         {
             myAnimator.SetBool("IsJumping", true);
+
         }
+        
     }
 
-    bool PlayerBangedHead()
+    bool RayFromPlayerCentre(Vector2 dir)
     {
         Vector2 player_centre = new Vector2(transform.position.x, transform.position.y + 1);
-        bool hit = Physics2D.Raycast(player_centre, transform.up, 1f,LayerMask.GetMask("Ground"));
+        bool hit = Physics2D.Raycast(player_centre, dir, 1f,LayerMask.GetMask("Ground"));
         if (hit)
         {
             return true;
         }
         return false;
     }
+
+
+    
 }
