@@ -1,5 +1,3 @@
-using UnityEditor.Callbacks;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,8 +15,11 @@ public class PlayerMovement : MonoBehaviour
     InventoryManager inventoryManager;
     float startingGravity;
     public Sprite spr;
+    Vector2 down_dir = new Vector2(0, -1);
+    PlayerInput playerInput;
     void Start()
     {
+        playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myCapsuleCollider = GetComponent<CapsuleCollider2D>();
@@ -28,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+
 
         if (myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
@@ -41,31 +42,43 @@ public class PlayerMovement : MonoBehaviour
             // clear-cut jump heights.
             if (inventoryManager.Wood < 10)
             {
-                rb.gravityScale = 2f;
+                rb.gravityScale = 1.9f;
             }
             else if (inventoryManager.Wood >= 10)
             {
-                rb.gravityScale = 3f;
+                rb.gravityScale = 2.2f;
             }
             else if (inventoryManager.Wood >= 20)
             {
-                rb.gravityScale = 4f;
+                rb.gravityScale = 2.5f;
             }
         }
+
+
+
         Run();
         FlipSprite();
         ClimbLadder();
-
-        //this part was written by Jamie --------------------
-        if (!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        
+        if(RayFromPlayerCentre(down_dir))
         {
-            myAnimator.SetBool("IsJumping", true);
+
+            playerInput.actions.FindAction("Jump").Enable();
+            if(RayFromPlayerCentre(Vector2.left) || RayFromPlayerCentre(Vector2.right))
+            {
+                
+                myAnimator.SetBool("IsJumping",true);
+            }
         }
+
         else
         {
-            myAnimator.SetBool("IsJumping", false);
+            playerInput.actions.FindAction("Jump").Disable();
         }
-        //--------------------------------------------------
+
+            CheckForAirTime();
+
+
     }
 
     void OnMove(InputValue value)
@@ -77,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Checks if the player is touching the Ground layer
         // If not, prevents the use of Jump
-        if(value.isPressed && 
+        if (value.isPressed &&
             myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))
             || myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
@@ -91,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = playerVelocity;
 
         bool hasHorizontalSpeed = Mathf.Abs(rb.linearVelocity.x) > Mathf.Epsilon;
-        if(hasHorizontalSpeed && !myAnimator.GetBool("IsJumping"))
+        if (hasHorizontalSpeed && !myAnimator.GetBool("IsJumping"))
         {
             myAnimator.SetBool("isRunning", true);
         }
@@ -108,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
         // Movement may not always reach absolute 0 so this is a way to cover those
         // fringe cases (for example, value is within deadzone on a controller stick).
         bool hasHorizontalSpeed = Mathf.Abs(rb.linearVelocity.x) > Mathf.Epsilon;
-        if(hasHorizontalSpeed)
+        if (hasHorizontalSpeed)
         {
             // Flips the sprite based on its velocity x movement
             transform.localScale = new Vector2(Mathf.Sign(rb.linearVelocity.x), 1f);
@@ -117,9 +130,9 @@ public class PlayerMovement : MonoBehaviour
 
     void ClimbLadder()
     {
-        if(myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        if (myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
-            if(!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+            if (!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
             {
                 myAnimator.SetBool("isClimbing", true);
             }
@@ -140,6 +153,34 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    //Both of these functions were made by Jamie - 
+    void CheckForAirTime()
+    {
+        //Animator Stuff
+        if (!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        {
+            myAnimator.SetBool("IsJumping", true);
+        }
+        else
+        {
+            myAnimator.SetBool("IsJumping", false);
+        }
+
+        if (rb.linearVelocityY !=0 && RayFromPlayerCentre(transform.up))
+        {
+            myAnimator.SetBool("IsJumping", true);
+
+        }
+        
+    }
+
+    bool RayFromPlayerCentre(Vector2 dir)
+    {
+        Vector2 player_centre = new Vector2(transform.position.x, transform.position.y + 1);
+        bool hit = Physics2D.Raycast(player_centre, dir, 2f,LayerMask.GetMask("Ground"));
+        return hit;
+    }
 
 
+    
 }
