@@ -1,5 +1,4 @@
 using UnityEngine;
-//script written by Jamie Mitchell
 
 public class WoodScript : MonoBehaviour
 {
@@ -8,7 +7,6 @@ public class WoodScript : MonoBehaviour
     private GameObject player;
     void Start()
     {
-        //When spawned jumps in a random direction
         player = GameObject.Find("Player");
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         Vector2 spawnVector = new Vector2(Random.Range(-10f,10f),Random.Range(8f,12f));
@@ -17,7 +15,6 @@ public class WoodScript : MonoBehaviour
 
 
 
-    // If wood collides with player , add wood to players inventory and destory.
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject == player)

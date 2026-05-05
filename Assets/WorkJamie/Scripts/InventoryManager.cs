@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 
 public class InventoryManager : MonoBehaviour
 {
-    //amazing code written by Jamie
+    //amazing code written by jamie
     public int Wood;
     public KeyCode inventory_open_key;
     private GameObject InventoryUI;
@@ -47,7 +47,7 @@ public class InventoryManager : MonoBehaviour
         WoodText = GameObject.Find("WoodText").GetComponent<TextMeshProUGUI>();
         InventoryUI = GameObject.Find("Background");
         GameObject InvButtons = GameObject.Find("Icons");
-        //Check all UI elements are in the game
+
         if (!InvButtons || !InventoryUI || !WoodText)
         {
             Debug.LogWarning("MISSING UI ELEMENTS!!!");
@@ -67,7 +67,7 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //this is for debug purposes , should be removed later on.
+        //this is for debug purposes
         if (Input.GetKeyDown(KeyCode.T))
         {
             AddWood(1);
@@ -95,7 +95,6 @@ public class InventoryManager : MonoBehaviour
             Time.fixedDeltaTime = 0.02f * Time.timeScale;
         }
         
-        //updates inventory icons eveery frame
         UpdateInventoryIcons();
     }
 
@@ -224,14 +223,13 @@ public class InventoryManager : MonoBehaviour
                 return;
 
             case ("Trap"):
-                //Places trap at the players feet.
                 GameObject player = GameObject.Find("Player");
                 Vector3 vec = new Vector3(player.transform.GetChild(0).transform.position.x + player.transform.localScale.x * 1.5f, player.transform.GetChild(0).transform.position.y - 0.507f,0);
                 Instantiate(Trap,vec,Quaternion.identity);
 
                 return;
             default:
-                //stops code from breaking if item is not recognized.
+                
                 Debug.Log("item not recognized");
                 return;
         }
