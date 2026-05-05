@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     InventoryManager inventoryManager;
     float startingGravity;
     public Sprite spr;
-
+    Vector2 down_dir = new Vector2(0, -1);
     PlayerInput playerInput;
     void Start()
     {
@@ -42,22 +42,41 @@ public class PlayerMovement : MonoBehaviour
             // clear-cut jump heights.
             if (inventoryManager.Wood < 10)
             {
-                rb.gravityScale = 2f;
+                rb.gravityScale = 1.9f;
             }
             else if (inventoryManager.Wood >= 10)
             {
-                rb.gravityScale = 3f;
+                rb.gravityScale = 2.2f;
             }
             else if (inventoryManager.Wood >= 20)
             {
-                rb.gravityScale = 4f;
+                rb.gravityScale = 2.5f;
             }
         }
+
+
+
         Run();
         FlipSprite();
         ClimbLadder();
+        
+        if(RayFromPlayerCentre(down_dir))
+        {
 
-        CheckForAirTime();
+            playerInput.actions.FindAction("Jump").Enable();
+            if(RayFromPlayerCentre(Vector2.left) || RayFromPlayerCentre(Vector2.right))
+            {
+                
+                myAnimator.SetBool("IsJumping",true);
+            }
+        }
+
+        else
+        {
+            playerInput.actions.FindAction("Jump").Disable();
+        }
+
+            CheckForAirTime();
 
 
     }
@@ -158,12 +177,8 @@ public class PlayerMovement : MonoBehaviour
     bool RayFromPlayerCentre(Vector2 dir)
     {
         Vector2 player_centre = new Vector2(transform.position.x, transform.position.y + 1);
-        bool hit = Physics2D.Raycast(player_centre, dir, 1f,LayerMask.GetMask("Ground"));
-        if (hit)
-        {
-            return true;
-        }
-        return false;
+        bool hit = Physics2D.Raycast(player_centre, dir, 2f,LayerMask.GetMask("Ground"));
+        return hit;
     }
 
 
