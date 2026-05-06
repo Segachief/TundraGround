@@ -60,11 +60,11 @@ public class PlayerMovement : MonoBehaviour
         FlipSprite();
         ClimbLadder();
         
-        if(RayFromPlayerCentre(down_dir,2f))
+        if(RayFromPlayerCentre(down_dir))
         {
 
             playerInput.actions.FindAction("Jump").Enable();
-            if(RayFromPlayerCentre(Vector2.left,2f) || RayFromPlayerCentre(Vector2.right,2f))
+            if(RayFromPlayerCentre(Vector2.left) || RayFromPlayerCentre(Vector2.right))
             {
                 
                 myAnimator.SetBool("IsJumping",true);
@@ -166,7 +166,7 @@ public class PlayerMovement : MonoBehaviour
             myAnimator.SetBool("IsJumping", false);
         }
 
-        if (rb.linearVelocityY != 0 && RayFromPlayerCentre(transform.up, 0.1f))
+        if (rb.linearVelocityY !=0 && RayFromPlayerCentre(transform.up))
         {
             myAnimator.SetBool("IsJumping", true);
 
@@ -174,10 +174,10 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    bool RayFromPlayerCentre(Vector2 dir,float length)
+    bool RayFromPlayerCentre(Vector2 dir)
     {
         Vector2 player_centre = new Vector2(transform.position.x, transform.position.y + 1);
-        bool hit = Physics2D.Raycast(player_centre, dir, length,LayerMask.GetMask("Ground"));
+        bool hit = Physics2D.Raycast(player_centre, dir, 2f,LayerMask.GetMask("Ground"));
         return hit;
     }
 
