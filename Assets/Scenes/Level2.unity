@@ -10486,7 +10486,9 @@ MonoBehaviour:
   leftEdge: {fileID: 787398644}
   rightEdge: {fileID: 956036431}
   enemy: {fileID: 274389674}
-  speed: 2
+  speed: 2.5
+  anim: {fileID: 274389679}
+  idleDuration: 1
 --- !u!1 &1859553676
 GameObject:
   m_ObjectHideFlags: 0

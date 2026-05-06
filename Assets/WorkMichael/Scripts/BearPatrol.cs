@@ -8,11 +8,15 @@ public class BearPatrol : MonoBehaviour
     [SerializeField] private float speed; // Speed of Enemy 
     private Vector3 initScale;
     private bool movingLeft;
-    private Animator anim;
+    [SerializeField] private Animator anim;
+    [SerializeField] private float idleDuration;
+    private float idleTimer;
+ 
 
     private void Awake()
     {
         initScale = enemy.localScale;
+        
     }
     private void Update()
     {
@@ -34,11 +38,16 @@ public class BearPatrol : MonoBehaviour
 
     private void DirectionChange()
     {
-        movingLeft = !movingLeft;
+        anim.SetBool("isWalking", false );
+        idleTimer += Time.deltaTime;
+        if (idleTimer > idleDuration)
+            movingLeft = !movingLeft;
     }
 
     private void MoveInDirection(int  _direction)
 {
+        idleTimer = 0;
+    anim.SetBool("isWalking", true );
     //Make enemy face direction
     enemy.localScale = new Vector3(Mathf.Abs(initScale.x) * -_direction, initScale.y, initScale.z);
 
