@@ -47,7 +47,8 @@ public class InventoryManager : MonoBehaviour
         WoodText = GameObject.Find("WoodText").GetComponent<TextMeshProUGUI>();
         InventoryUI = GameObject.Find("Background");
         GameObject InvButtons = GameObject.Find("Icons");
-
+        //sets timescale in case of player death while inventory is open.
+        Time.timeScale = 1;
         if (!InvButtons || !InventoryUI || !WoodText)
         {
             Debug.LogWarning("MISSING UI ELEMENTS!!!");
