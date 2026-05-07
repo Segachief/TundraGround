@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
         Run();
         FlipSprite();
         ClimbLadder();
-        
+        AmIDead();
         if(RayFromPlayerCentre(down_dir))
         {
 
@@ -153,7 +153,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //Both of these functions were made by Jamie - 
+    //these functions were made by Jamie - 
     void CheckForAirTime()
     {
         //Animator Stuff
@@ -182,5 +182,16 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    
+    void AmIDead()
+    {
+        if(GetComponent<PlayerHealth>().Health <= 0)
+        {
+            //if the animator wont play IsDead unless every other bool is false
+            //if theres a better way of doing this i dont know it clearly - J
+            myAnimator.SetBool("isRunning",false);
+            myAnimator.SetBool("IsJumping", false);
+           
+            myAnimator.SetBool("IsDead", true);
+        }
+    }
 }
