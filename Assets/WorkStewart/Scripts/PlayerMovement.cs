@@ -17,8 +17,11 @@ public class PlayerMovement : MonoBehaviour
     public Sprite spr;
     Vector2 down_dir = new Vector2(0, -1);
     PlayerInput playerInput;
+    public bool IsGrounded;
+    public float headspace;
     void Start()
     {
+        IsGrounded = true;
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
@@ -59,26 +62,19 @@ public class PlayerMovement : MonoBehaviour
         Run();
         FlipSprite();
         ClimbLadder();
+        CheckForAirTime();
         AmIDead();
-        if(RayFromPlayerCentre(down_dir))
+        //to stop player from super-jumping
+
+        if (IsGrounded)
         {
-
             playerInput.actions.FindAction("Jump").Enable();
-            if(RayFromPlayerCentre(Vector2.left) || RayFromPlayerCentre(Vector2.right))
-            {
-                
-                myAnimator.SetBool("IsJumping",true);
-            }
         }
-
         else
         {
             playerInput.actions.FindAction("Jump").Disable();
         }
-
-            CheckForAirTime();
-
-
+        
     }
 
     void OnMove(InputValue value)
@@ -156,28 +152,23 @@ public class PlayerMovement : MonoBehaviour
     //these functions were made by Jamie - 
     void CheckForAirTime()
     {
-        //Animator Stuff
-        if (!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        if (RayFromPlayerCentre(Vector2.down, headspace))
         {
-            myAnimator.SetBool("IsJumping", true);
+            IsGrounded = true;
         }
         else
         {
-            myAnimator.SetBool("IsJumping", false);
+            IsGrounded = false;
         }
 
-        if (rb.linearVelocityY !=0 && RayFromPlayerCentre(transform.up))
-        {
-            myAnimator.SetBool("IsJumping", true);
-
-        }
+        myAnimator.SetBool("IsJumping", !IsGrounded);
         
     }
 
-    bool RayFromPlayerCentre(Vector2 dir)
+    bool RayFromPlayerCentre(Vector2 dir,float length)
     {
         Vector2 player_centre = new Vector2(transform.position.x, transform.position.y + 1);
-        bool hit = Physics2D.Raycast(player_centre, dir, 2f,LayerMask.GetMask("Ground"));
+        bool hit = Physics2D.Raycast(player_centre, dir, length,LayerMask.GetMask("Ground"));
         return hit;
     }
 
