@@ -17,8 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public Sprite spr;
     Vector2 down_dir = new Vector2(0, -1);
     PlayerInput playerInput;
-    public bool IsGrounded;
-    public float headspace;
+    bool IsGrounded;
     void Start()
     {
         IsGrounded = true;
@@ -152,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
     //these functions were made by Jamie - 
     void CheckForAirTime()
     {
-        if (RayFromPlayerCentre(Vector2.down, headspace))
+        if (RayFromPlayerCentre(Vector2.down, 1.1f))
         {
             IsGrounded = true;
         }
