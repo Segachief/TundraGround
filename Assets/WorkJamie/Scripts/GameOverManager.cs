@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameOverManager : MonoBehaviour
+public class GameOverManager : MonoBehaviour // This script was written by Jamie
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
    
     void Start()
     {
@@ -25,8 +25,14 @@ public class GameOverManager : MonoBehaviour
             SceneManager.LoadScene("MainMenu");
         }
         else if(button.name == "Retry")
-        {
+        {   
+            //LastPlayedScene is set in PlayerHealth on Start() so Retry will always play the last level the player played.
             SceneManager.LoadScene(PlayerPrefs.GetString("LastPlayedScene"));
+        }
+
+        else
+        {
+            Debug.LogWarning("Unkown button pressed on GameOver Scene");
         }
     }
 }

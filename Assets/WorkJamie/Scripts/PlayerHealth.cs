@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,13 +13,7 @@ public class PlayerHealth : MonoBehaviour /// Script written by Jamie -
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if(Health <= 0)
-        {
-            PlayerDeath();
-        }
-    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -29,10 +24,8 @@ public class PlayerHealth : MonoBehaviour /// Script written by Jamie -
         }
     }
 
-    void PlayerDeath()
+    public void PlayerDeath()
     {
-        
-        
         SceneManager.LoadScene("GameOver");
     }
 }
