@@ -440,7 +440,7 @@ GameObject:
   m_Component:
   - component: {fileID: 157343178}
   m_Layer: 0
-  m_Name: Background 3
+  m_Name: sky3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -577,7 +577,7 @@ GameObject:
   m_Component:
   - component: {fileID: 241507700}
   m_Layer: 0
-  m_Name: Background
+  m_Name: sky1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -651,7 +651,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -699,7 +699,7 @@ GameObject:
   m_Component:
   - component: {fileID: 282275994}
   m_Layer: 0
-  m_Name: Backgrounds
+  m_Name: TheBacks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9793,7 +9793,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1410060714}
   m_Layer: 0
-  m_Name: Background 2
+  m_Name: sky2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
