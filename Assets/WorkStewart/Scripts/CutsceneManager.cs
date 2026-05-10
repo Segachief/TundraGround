@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CutsceneManager : MonoBehaviour
 {
+    //SM
     [SerializeField] bool hasTriggered;
     [SerializeField] Vector3 placementDebug; //Used for adjusting cutscene movement only
     [SerializeField] string identifier = "";

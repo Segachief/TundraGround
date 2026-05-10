@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    //SM
     public CinemachineCamera cinemachineCam;
     private Transform player;
 

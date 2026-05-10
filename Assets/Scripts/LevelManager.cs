@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    //SM
     string currentScene = "";
     private AudioManager audioManager;
     
