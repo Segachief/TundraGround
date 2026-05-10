@@ -4,6 +4,8 @@ public class BossMovement : MonoBehaviour
 {
     //SM
     [SerializeField] float moveSpeed = 1f;
+    [SerializeField] private Transform boss;
+    [SerializeField] short health = 3;
     Rigidbody2D rb;
     Animator myAnimator;
 
@@ -13,7 +15,7 @@ public class BossMovement : MonoBehaviour
         myAnimator = GetComponent<Animator>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(moveSpeed, 0f);
 
@@ -31,6 +33,9 @@ public class BossMovement : MonoBehaviour
         myAnimator.SetBool("isIdle", true);
         myAnimator.SetBool("isMoving", false);
         myAnimator.SetBool("isAttacking", false);
+
+        //If moving, flip the sprite in facing direction
+        
     }
 
     void FlipSprite()
@@ -49,6 +54,23 @@ public class BossMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        
+        //May need to be player axe swing, as trap may not inflict damage it seems
+    }
+    
+
+    //Call method with parameters when it's time to move
+    private void Movement(float xCoord, float yCoord)
+    {
+        //Replace with movement to specific coordinates I think
+        // Move in that direction
+        boss.position = new Vector3(
+        xCoord
+        + Time.deltaTime
+        * moveSpeed,
+        yCoord
+        + Time.deltaTime
+        * moveSpeed,
+        boss.position.z);
+        FlipSprite();
     }
 }
