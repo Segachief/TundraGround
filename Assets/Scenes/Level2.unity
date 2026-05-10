@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 12477317}
   - component: {fileID: 12477318}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1284148398870767405, guid: 0d7ad70f8cc412042a37abbc7b5fc6cb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.9011154
+      value: 5.852
       objectReference: {fileID: 0}
     - target: {fileID: 1284148398870767405, guid: 0d7ad70f8cc412042a37abbc7b5fc6cb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -439,7 +439,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 157343178}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: sky3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,7 +576,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 241507700}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: sky1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -689,6 +689,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &274389681
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274389673}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &282275993
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,7 +725,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 282275994}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TheBacks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8389,6 +8416,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1284148398870767405, guid: 0d7ad70f8cc412042a37abbc7b5fc6cb, type: 3}
   m_PrefabInstance: {fileID: 1408164522}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &666945600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 666945601}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &666945601
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666945600}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.42, y: -2.31, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 274389674}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &683175914
 GameObject:
   m_ObjectHideFlags: 0
@@ -8399,7 +8457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 683175915}
   - component: {fileID: 683175916}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9313,7 +9371,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1262302493}
   - component: {fileID: 1262302492}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9740,7 +9798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1284148398870767405, guid: 0d7ad70f8cc412042a37abbc7b5fc6cb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0716846
+      value: -0.12
       objectReference: {fileID: 0}
     - target: {fileID: 1284148398870767405, guid: 0d7ad70f8cc412042a37abbc7b5fc6cb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9792,7 +9850,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1410060714}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: sky2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9959,7 +10017,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1445994569}
   - component: {fileID: 1445994568}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Blue Backdrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10354,7 +10412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1804770119}
   - component: {fileID: 1804770120}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Blue Backdrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10489,6 +10547,13 @@ MonoBehaviour:
   speed: 2.5
   anim: {fileID: 274389679}
   idleDuration: 1
+  player: {fileID: 32294210}
+  chaseRange: 5
+  groundCheck: {fileID: 666945601}
+  groundCheckDistance: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1859553676
 GameObject:
   m_ObjectHideFlags: 0
@@ -10978,7 +11043,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2007568877}
   - component: {fileID: 2007568878}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Blue Backdrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11216,6 +11281,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bear
       objectReference: {fileID: 0}
+    - target: {fileID: 8371315618774410919, guid: 000ffe1830d9b2f4ba8eaa332ec94795, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371315618774410919, guid: 000ffe1830d9b2f4ba8eaa332ec94795, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 8387927316348665748, guid: 000ffe1830d9b2f4ba8eaa332ec94795, type: 3}
       propertyPath: enemy
       value: 
@@ -11239,7 +11312,10 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8387927316348665748, guid: 000ffe1830d9b2f4ba8eaa332ec94795, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2407420329773015123, guid: 000ffe1830d9b2f4ba8eaa332ec94795, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 666945601}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8371315618774410919, guid: 000ffe1830d9b2f4ba8eaa332ec94795, type: 3}
       insertIndex: -1
@@ -11247,6 +11323,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8371315618774410919, guid: 000ffe1830d9b2f4ba8eaa332ec94795, type: 3}
       insertIndex: -1
       addedObject: {fileID: 274389679}
+    - targetCorrespondingSourceObject: {fileID: 8371315618774410919, guid: 000ffe1830d9b2f4ba8eaa332ec94795, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 274389681}
   m_SourcePrefab: {fileID: 100100000, guid: 000ffe1830d9b2f4ba8eaa332ec94795, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
