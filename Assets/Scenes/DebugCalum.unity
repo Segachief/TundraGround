@@ -143,7 +143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 31582351}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.51, y: 3, z: 0.067859225}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -164,7 +164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 329496323231832130, guid: 1360901223e906946b6295ba5b8f27c7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.02
+      value: 1.37
       objectReference: {fileID: 0}
     - target: {fileID: 329496323231832130, guid: 1360901223e906946b6295ba5b8f27c7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4450,7 +4450,7 @@ Transform:
   m_GameObject: {fileID: 858921652}
   serializedVersion: 2
   m_LocalRotation: {x: 1.16301635e-10, y: -0.0000000037206656, z: 4.3271948e-19, w: 1}
-  m_LocalPosition: {x: -16.4, y: 1.02, z: -10}
+  m_LocalPosition: {x: -16.4, y: 1.37, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4471,9 +4471,9 @@ GameObject:
   - component: {fileID: 872725065}
   - component: {fileID: 872725064}
   - component: {fileID: 872725067}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: crowCY
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4583,10 +4583,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 80
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -4614,7 +4614,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.2, y: 3.2}
+  m_Size: {x: 4, y: 4}
   m_EdgeRadius: 0
 --- !u!50 &872725065
 Rigidbody2D:
@@ -4694,7 +4694,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 15
+  m_Radius: 20
 --- !u!1 &923254386
 GameObject:
   m_ObjectHideFlags: 0
@@ -5531,7 +5531,7 @@ Transform:
   m_GameObject: {fileID: 1602527524}
   serializedVersion: 2
   m_LocalRotation: {x: 1.16301635e-10, y: -0.0000000037206656, z: -4.2154457e-17, w: 1}
-  m_LocalPosition: {x: -16.4, y: 1.02, z: -10}
+  m_LocalPosition: {x: -16.4, y: 1.37, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
