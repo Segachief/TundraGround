@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class TrapScript : MonoBehaviour
+public class TrapScript : MonoBehaviour // This script was written by Jamie - 
 {
     Vector2 trapped_position;
     GameObject trapped_object;
