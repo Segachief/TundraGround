@@ -18,6 +18,7 @@ public class BearPatrol : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float ChaseSpeed;
 
     private void Awake()
     {
@@ -82,7 +83,7 @@ public class BearPatrol : MonoBehaviour
     private void DirectionChange()
     {
         anim.SetBool("isWalking", false);
-        idleTimer += Time.deltaTime;
+        idleTimer += Time.fixedDeltaTime;
         if (idleTimer > idleDuration)
         {
             movingLeft = !movingLeft;
@@ -116,6 +117,6 @@ public class BearPatrol : MonoBehaviour
         else
             enemy.localScale = new Vector3(Mathf.Abs(initScale.x), initScale.y, initScale.z);
         float direction = Mathf.Sign(player.position.x - enemy.position.x);
-        rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(direction * ChaseSpeed, rb.linearVelocity.y);
     }
 }
