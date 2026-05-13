@@ -4471,9 +4471,9 @@ GameObject:
   - component: {fileID: 872725065}
   - component: {fileID: 872725064}
   - component: {fileID: 872725067}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: crowCY
-  m_TagString: Untagged
+  m_TagString: crow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4586,7 +4586,7 @@ BoxCollider2D:
     m_Bits: 80
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 257
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

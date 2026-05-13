@@ -8,6 +8,7 @@ TagManager:
   - Cherry
   - Trap
   - Enemy
+  - crow
   layers:
   - Default
   - TransparentFX
