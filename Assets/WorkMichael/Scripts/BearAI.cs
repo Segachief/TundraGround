@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BearPatrol : MonoBehaviour
 {
@@ -11,6 +11,7 @@ public class BearPatrol : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private float idleDuration;
     [SerializeField] private Transform player;
+    private PlayerHide playerHide;
     [SerializeField] private float chaseRange;
     private bool chasing;
     private float idleTimer;
@@ -19,12 +20,14 @@ public class BearPatrol : MonoBehaviour
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float ChaseSpeed;
+ 
+
 
     private void Awake()
     {
         rb = enemy.GetComponent<Rigidbody2D>();
         initScale = enemy.localScale;
-
+        playerHide = player.GetComponent<PlayerHide>();
     }
     private void FixedUpdate()
     {
@@ -34,7 +37,7 @@ public class BearPatrol : MonoBehaviour
         bool groundAhead = Physics2D.Raycast(origin, Vector2.down, groundCheckDistance, groundLayer);
         float distanceToPlayer = Vector2.Distance(enemy.position, player.position);
         float heightDifference = Mathf.Abs(player.position.y - enemy.position.y);
-        if (distanceToPlayer < chaseRange && heightDifference < 1f)
+        if (distanceToPlayer < chaseRange && heightDifference < 1f && !playerHide.IsHiding())
         {
             chasing = true;
         }
@@ -89,7 +92,7 @@ public class BearPatrol : MonoBehaviour
             movingLeft = !movingLeft;
             idleTimer = 0;
         }
-    }
+    } 
 
     private void StopAndTurn()
     {
