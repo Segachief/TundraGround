@@ -1,10 +1,10 @@
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CrowMovement : MonoBehaviour
 {//Calum Yule
     
-    public float speed;
     public bool chase = false;
     public bool squawking = false;
     public Transform startingPoint;
@@ -12,10 +12,18 @@ public class CrowMovement : MonoBehaviour
 
     private GameObject player;
 
+    [SerializeField] Transform target;
+    [SerializeField] Transform home;
+    NavMeshAgent agent;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
     }
 
     // Update is called once per frame
@@ -34,19 +42,22 @@ public class CrowMovement : MonoBehaviour
     private void Chase()
     {
         //crow will target player and move towards them
-        transform.position=Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+
+        agent.SetDestination(target.position);
 
         // if crow is near player, chase is paused and squawk is activated
-        if (Vector2.Distance(transform.position, player.transform.position) <= 2f)
+        if (Vector2.Distance(transform.position, player.transform.position) <= 3f)
         {
-            speed = 0;
+            GetComponent<NavMeshAgent>().SetDestination(transform.position);
+
             squawk();
         }
         // when player leaves crows stopping radius speed is reset and squawk is cancelled
         else
         {
-            speed = 1.5f;
+            GetComponent<NavMeshAgent>().SetDestination(target.position);
             squawking = false;
+            
         }
     }
 
@@ -54,7 +65,10 @@ public class CrowMovement : MonoBehaviour
     private void ReturnStartPoint()
     {
         //when player leaves crows radius, crow will target is starting point and will move towards it
-        transform.position = Vector2.MoveTowards(transform.position, startingPoint.position, speed * Time.deltaTime);
+        //transform.position = Vector2.MoveTowards(transform.position, startingPoint.position, speed * Time.deltaTime);
+
+        agent.SetDestination(home.position);
+
         if (transform.position.x > startingPoint.transform.position.x)
             transform.rotation = Quaternion.Euler(0, 0, 0);
         else
