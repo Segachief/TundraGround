@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerHealth : MonoBehaviour // Script written by Jamie - 
+public class PlayerHealth : MonoBehaviour /// Script written by Jamie - 
 {
     public int Health;
 
