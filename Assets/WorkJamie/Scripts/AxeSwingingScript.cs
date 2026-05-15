@@ -28,10 +28,20 @@ public class AxeSwingingScript : MonoBehaviour // This script was written by Jam
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "tree")
+        switch (collision.gameObject.tag)
         {
-            collision.gameObject.GetComponent<InteractableBehaviour>().DestroyTree();
+
+            case "tree":
+                collision.gameObject.GetComponent<InteractableBehaviour>().DestroyTree();
+                return;
+
+            case "Enemy":
+                EnemyKnockback(collision.gameObject);
+                StartCoroutine(DamageFlash(collision.gameObject));
+                collision.gameObject.GetComponentInParent<EnemyHealth>().Health--;
+                return;
         }
+
     }
 
     public void EnableAxeHitbox()
@@ -42,5 +52,21 @@ public class AxeSwingingScript : MonoBehaviour // This script was written by Jam
     public void DisableAxeHitbox()
     {
         GetComponent<BoxCollider2D>().enabled = false;
+    }
+
+    public void EnemyKnockback(GameObject enemy)
+    {
+        float knock_float = (enemy.gameObject.transform.position.x - transform.position.x);
+        Vector2 knockback_vec = new Vector2(knock_float * 175, 0f);
+
+        enemy.GetComponentInParent<Rigidbody2D>().AddForce(knockback_vec);
+    }
+
+    public IEnumerator DamageFlash(GameObject gameobj)
+    {
+        gameobj.GetComponentInParent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        gameobj.GetComponentInParent<SpriteRenderer>().color = Color.white;
+        
     }
 }
