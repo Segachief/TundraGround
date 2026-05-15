@@ -2,13 +2,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour // Script written by Jamie - 
 {
     public int Health;
 
     private PlayerHide playerHide;
-    private Animator animator;
-    private bool isDead = false;
 
     void Start()
     {
@@ -18,34 +16,24 @@ public class PlayerHealth : MonoBehaviour
         PlayerPrefs.Save();
 
         playerHide = GetComponent<PlayerHide>();
-        animator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isDead && collision.CompareTag("Enemy") && !playerHide.IsHiding())
+        if (collision.gameObject.tag == "Enemy" && !playerHide.IsHiding())
         {
             Health--;
 
             if (Health <= 0)
             {
-                PlayerDeath();
+                Invoke(nameof(PlayerDeath), 1.5f);
             }
+
+            return;
         }
     }
 
     public void PlayerDeath()
-    {
-        isDead = true;
-
-        if (animator != null)
-        {
-            animator.SetBool("IsDead", true);
-        }
-        Invoke(nameof(LoadGameOver), 1.5f);
-    }
-
-    private void LoadGameOver()
     {
         SceneManager.LoadScene("GameOver");
     }
