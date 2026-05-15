@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine;
-//script written by Jamie Mitchell
-public class AxeSwingingScript : MonoBehaviour
+
+public class AxeSwingingScript : MonoBehaviour // This script was written by Jamie - 
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public ItemData axe;
@@ -34,9 +34,6 @@ public class AxeSwingingScript : MonoBehaviour
         }
     }
 
-
-
-    //two functions to be used by AxeSwingAnimator script
     public void EnableAxeHitbox()
     {
         GetComponent<BoxCollider2D>().enabled = true;

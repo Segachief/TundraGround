@@ -17,8 +17,10 @@ public class PlayerMovement : MonoBehaviour
     public Sprite spr;
     Vector2 down_dir = new Vector2(0, -1);
     PlayerInput playerInput;
+    bool IsGrounded;
     void Start()
     {
+        IsGrounded = true;
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
@@ -59,26 +61,19 @@ public class PlayerMovement : MonoBehaviour
         Run();
         FlipSprite();
         ClimbLadder();
-        
-        if(RayFromPlayerCentre(down_dir,2f))
+        CheckForAirTime();
+        AmIDead();
+        //to stop player from super-jumping
+
+        if (IsGrounded)
         {
-
             playerInput.actions.FindAction("Jump").Enable();
-            if(RayFromPlayerCentre(Vector2.left,2f) || RayFromPlayerCentre(Vector2.right,2f))
-            {
-                
-                myAnimator.SetBool("IsJumping",true);
-            }
         }
-
         else
         {
             playerInput.actions.FindAction("Jump").Disable();
         }
-
-            CheckForAirTime();
-
-
+        
     }
 
     void OnMove(InputValue value)
@@ -153,24 +148,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //Both of these functions were made by Jamie - 
+    //these functions were made by Jamie - 
     void CheckForAirTime()
     {
-        //Animator Stuff
-        if (!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        if (RayFromPlayerCentre(Vector2.down, 1.1f))
         {
-            myAnimator.SetBool("IsJumping", true);
+            IsGrounded = true;
         }
         else
         {
-            myAnimator.SetBool("IsJumping", false);
+            IsGrounded = false;
         }
 
-        if (rb.linearVelocityY != 0 && RayFromPlayerCentre(transform.up, 0.1f))
-        {
-            myAnimator.SetBool("IsJumping", true);
-
-        }
+        myAnimator.SetBool("IsJumping", !IsGrounded);
         
     }
 
@@ -182,5 +172,16 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    
+    void AmIDead()
+    {
+        if(GetComponent<PlayerHealth>().Health <= 0)
+        {
+            //if the animator wont play IsDead unless every other bool is false
+            //if theres a better way of doing this i dont know it clearly - J
+            myAnimator.SetBool("isRunning",false);
+            myAnimator.SetBool("IsJumping", false);
+           
+            myAnimator.SetBool("IsDead", true);
+        }
+    }
 }

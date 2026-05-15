@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AxeSwingAnimator : StateMachineBehaviour
+public class AxeSwingAnimator : StateMachineBehaviour //This script was written by Jamie - 
 {
     
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
