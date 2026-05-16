@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource level3;
     [SerializeField] private AudioSource level4;
     [SerializeField] private AudioSource level5;
+    [SerializeField] private AudioSource ending;
     [SerializeField] private AudioSource gameOver;
     [SerializeField] private AudioSource levelComplete;
 
@@ -37,6 +38,7 @@ public class AudioManager : MonoBehaviour
     public bool level3Playing = false;
     public bool level4Playing = false;
     public bool level5Playing = false;
+    public bool endingPlaying = false;
     public bool gameOverPlaying = false;
     public bool levelCompletePlaying = false;
 
@@ -192,6 +194,14 @@ public class AudioManager : MonoBehaviour
         if (!level5Playing)
         {
             level5.Play(); level5Playing = true;
+        }
+    }
+
+    public void StartEndingMusic()
+    {
+        if (!endingPlaying)
+        {
+            ending.Play(); endingPlaying = true;
         }
     }
 

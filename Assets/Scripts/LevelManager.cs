@@ -112,6 +112,17 @@ public class LevelManager : MonoBehaviour
         audioManager.StartFadeMusicIn(currentScene);
     }
 
+    public void LoadEnding()
+    {
+        audioManager.StartFadeMusicOut(currentScene);
+        
+        currentScene = "Ending";
+        ScreenFader.Instance.FadeToScene(currentScene);
+        audioManager.StopMusic();
+        audioManager.StartEndingMusic();
+        audioManager.StartFadeMusicIn(currentScene);
+    }
+
     public void LoadDebugCalum()
     {
         audioManager.StartFadeMusicOut(currentScene);
