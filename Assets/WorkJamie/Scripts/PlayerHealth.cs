@@ -23,7 +23,6 @@ public class PlayerHealth : MonoBehaviour /// Script written by Jamie -
         if (collision.gameObject.tag == "Enemy" && !playerHide.IsHiding())
         {
             Health--;
-
             return;
         }
     }

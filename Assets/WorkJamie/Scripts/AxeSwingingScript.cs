@@ -18,7 +18,7 @@ public class AxeSwingingScript : MonoBehaviour // This script was written by Jam
     {
         IsAxeSwinging = myAnimator.GetBool("AxeSwing");
 
-        if(Input.GetKeyDown(Axe_Button) && InventoryManager.instance.Inventory.Contains(axe))
+        if(Input.GetKeyDown(Axe_Button) && InventoryManager.instance.Inventory.Contains(axe) && GetComponent<PlayerHealth>().Health > 0)
         {
             myAnimator.SetTrigger("AxeSwing");
             
