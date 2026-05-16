@@ -9,16 +9,18 @@ public class AxeSwingingScript : MonoBehaviour // This script was written by Jam
     public KeyCode Axe_Button;
     Animator myAnimator;
     private bool IsAxeSwinging;
+    private PlayerHealth playerHealth;
     // Update is called once per frame
     private void Awake()
     {
+        playerHealth = GetComponentInParent<PlayerHealth>();
         myAnimator = GetComponentInParent<Animator>();
     }
     void Update()
     {
         IsAxeSwinging = myAnimator.GetBool("AxeSwing");
 
-        if(Input.GetKeyDown(Axe_Button) && InventoryManager.instance.Inventory.Contains(axe) && GetComponent<PlayerHealth>().Health > 0)
+        if(Input.GetKeyDown(Axe_Button) && InventoryManager.instance.Inventory.Contains(axe) && playerHealth.Health > 0)
         {
             myAnimator.SetTrigger("AxeSwing");
             
