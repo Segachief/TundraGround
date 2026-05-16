@@ -18,17 +18,11 @@ public class PlayerHealth : MonoBehaviour /// Script written by Jamie -
         playerHide = GetComponent<PlayerHide>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy" && !playerHide.IsHiding())
         {
             Health--;
-
-            if (Health <= 0)
-            {
-                Invoke(nameof(PlayerDeath), 1.5f);
-            }
-
             return;
         }
     }
