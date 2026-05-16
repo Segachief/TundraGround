@@ -181,8 +181,8 @@ public class PlayerMovement : MonoBehaviour
             //if theres a better way of doing this i dont know it clearly - J
             myAnimator.SetBool("isRunning",false);
             myAnimator.SetBool("IsJumping", false);
-           
-            myAnimator.SetBool("IsDead", true);
+            myAnimator.SetBool("AxeSwing", false);
+            myAnimator.SetTrigger("IsDead");
         }
     }
 }

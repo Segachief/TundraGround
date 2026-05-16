@@ -8,6 +8,7 @@ TagManager:
   - Cherry
   - Trap
   - Enemy
+  - HideSpot
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Climbing
   - Player
   - Background
-  - Boss
+  - Enemy
   - 
   - 
   - 
