@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BearPatrol : MonoBehaviour
 {
@@ -11,6 +11,7 @@ public class BearPatrol : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private float idleDuration;
     [SerializeField] private Transform player;
+    private PlayerHide playerHide;
     [SerializeField] private float chaseRange;
     private bool chasing;
     private float idleTimer;
@@ -19,12 +20,14 @@ public class BearPatrol : MonoBehaviour
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float ChaseSpeed;
+ 
+
 
     private void Awake()
     {
         rb = enemy.GetComponent<Rigidbody2D>();
         initScale = enemy.localScale;
-
+        playerHide = player.GetComponent<PlayerHide>();
     }
     private void FixedUpdate()
     {
@@ -34,7 +37,7 @@ public class BearPatrol : MonoBehaviour
         bool groundAhead = Physics2D.Raycast(origin, Vector2.down, groundCheckDistance, groundLayer);
         float distanceToPlayer = Vector2.Distance(enemy.position, player.position);
         float heightDifference = Mathf.Abs(player.position.y - enemy.position.y);
-        if (distanceToPlayer < chaseRange && heightDifference < 1f)
+        if (distanceToPlayer < chaseRange && heightDifference < 1f && !playerHide.IsHiding())
         {
             chasing = true;
         }
@@ -89,7 +92,7 @@ public class BearPatrol : MonoBehaviour
             movingLeft = !movingLeft;
             idleTimer = 0;
         }
-    }
+    } 
 
     private void StopAndTurn()
     {
@@ -101,22 +104,26 @@ public class BearPatrol : MonoBehaviour
     {
         idleTimer = 0;
         anim.SetBool("isWalking", true);
-        //Make enemy face direction
-        enemy.localScale = new Vector3(Mathf.Abs(initScale.x) * -_direction, initScale.y, initScale.z);
-
-        // Move in that direction
-        rb.linearVelocity = new Vector2(_direction * speed, rb.linearVelocity.y);
+        enemy.localScale = new Vector3(Mathf.Abs(initScale.x) * -_direction, initScale.y, initScale.z); // //Make enemy face direction
+        rb.linearVelocity = new Vector2(_direction * speed, rb.linearVelocity.y); // Move in that direction
     }
 
     private void ChasePlayer()
     {
         anim.SetBool("isWalking", true);
-        //Face the player
-        if (player.position.x > enemy.position.x)
+        if (player.position.x > enemy.position.x) // Face the player
             enemy.localScale = new Vector3(-Mathf.Abs(initScale.x), initScale.y, initScale.z);
         else
             enemy.localScale = new Vector3(Mathf.Abs(initScale.x), initScale.y, initScale.z);
         float direction = Mathf.Sign(player.position.x - enemy.position.x);
-        rb.linearVelocity = new Vector2(direction * ChaseSpeed, rb.linearVelocity.y);
+        Vector2 checkDirection = direction > 0 ? Vector2.right : Vector2.left; // Ground check in front of bear
+        Vector2 origin = groundCheck.position + (Vector3)(checkDirection * 0.5f);
+        bool groundAhead = Physics2D.Raycast(origin, Vector2.down, groundCheckDistance, groundLayer);
+        if (!groundAhead) // Stop bear walking off edges
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+        rb.linearVelocity = new Vector2(direction * ChaseSpeed, rb.linearVelocity.y); // Chase player
     }
 }
