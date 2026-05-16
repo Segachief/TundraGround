@@ -216,7 +216,7 @@ public class InventoryManager : MonoBehaviour
                 //IsTouchingGM is set from the InteractableBehaviour script attached to every Interactable GameObject.
                 if (IsTouchingGm.name.Contains("tree"))
                 {
-                    AddWood(20);
+                    AddWood(10);
                     
                     Destroy(IsTouchingGm.gameObject);
                 }

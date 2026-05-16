@@ -19,7 +19,7 @@ public class WoodScript : MonoBehaviour
     {
         if (collision.gameObject == player)
         {
-            InventoryManager.instance.AddWood(10);
+            InventoryManager.instance.AddWood(5);
             Destroy(this.gameObject);
         }
     }

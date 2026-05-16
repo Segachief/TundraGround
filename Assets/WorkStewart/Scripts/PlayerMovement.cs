@@ -49,11 +49,11 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (inventoryManager.Wood >= 10)
             {
-                rb.gravityScale = 2.2f;
+                rb.gravityScale = 2.1f;
             }
             else if (inventoryManager.Wood >= 20)
             {
-                rb.gravityScale = 2.5f;
+                rb.gravityScale = 2.3f;
             }
         }
 
