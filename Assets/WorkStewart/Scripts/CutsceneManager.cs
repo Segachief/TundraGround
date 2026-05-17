@@ -11,6 +11,9 @@ public class CutsceneManager : MonoBehaviour
     private PlayerMovement player;
     private GameObject playerGO;
 
+    private GameObject boss;
+    private GameObject preBoss;
+
     public Canvas canvas;
     private AudioManager audioManager;
 
@@ -25,6 +28,8 @@ public class CutsceneManager : MonoBehaviour
         {
             player = FindFirstObjectByType<PlayerMovement>();
             playerGO = GameObject.Find("Player");
+            preBoss = GameObject.Find("PreBoss");
+            boss = GameObject.Find("Boss");
 
             hasTriggered = true;
 
@@ -46,12 +51,10 @@ public class CutsceneManager : MonoBehaviour
         }
     }
 
-    void cutscene1A(){
-		
-            //Lock player movement
-            //Pan/Lock Camera
-            //Play transform effect and hide regular stag, make actual boss appear in its place
-            audioManager.StartLevel5Music();
-            //Unlock player movement & activate boss
+    void cutscene1A()
+    {
+        preBoss.SetActive(false);
+        boss.SetActive(true);
+        audioManager.ForestSpiritSFX();
     }
 }

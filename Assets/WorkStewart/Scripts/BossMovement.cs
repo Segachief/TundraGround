@@ -5,34 +5,40 @@ public class BossMovement : MonoBehaviour
     //SM
     [SerializeField] float moveSpeed = 1f;
     [SerializeField] private Transform boss;
-    [SerializeField] short health = 3;
+    [SerializeField] int health = 250;
     Rigidbody2D rb;
     Animator myAnimator;
+    private GameObject player;
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(moveSpeed, 0f);
+        transform.position = Vector2.MoveTowards(
+            transform.position,
+            player.transform.position,
+            moveSpeed * Time.deltaTime);
+        //FlipSprite();
 
         //If boss is Moving
-        myAnimator.SetBool("isIdle", false);
-        myAnimator.SetBool("isMoving", true);
-        myAnimator.SetBool("isAttacking", false);
+        // myAnimator.SetBool("isIdle", false);
+        // myAnimator.SetBool("isMoving", true);
+        // myAnimator.SetBool("isAttacking", false);
         
-        //else if boss is attacking
-        myAnimator.SetBool("isIdle", false);
-        myAnimator.SetBool("isMoving", false);
-        myAnimator.SetBool("isAttacking", true);
+        // //else if boss is attacking
+        // myAnimator.SetBool("isIdle", false);
+        // myAnimator.SetBool("isMoving", false);
+        // myAnimator.SetBool("isAttacking", true);
 
-        //Else (use Idle)
+        // //Else (use Idle)
         myAnimator.SetBool("isIdle", true);
-        myAnimator.SetBool("isMoving", false);
-        myAnimator.SetBool("isAttacking", false);
+        // myAnimator.SetBool("isMoving", false);
+        // myAnimator.SetBool("isAttacking", false);
 
         //If moving, flip the sprite in facing direction
         
@@ -54,7 +60,7 @@ public class BossMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        //May need to be player axe swing, as trap may not inflict damage it seems
+        
     }
     
 

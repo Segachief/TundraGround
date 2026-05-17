@@ -23,6 +23,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource menuChoiceUI;
     [SerializeField] private AudioSource bearAttack;
     [SerializeField] private AudioClip[] bearAttackClips;
+    [SerializeField] private AudioSource forestSpiritSFX;
+    [SerializeField] private AudioClip[] forestSpiritSFXClips;
     [SerializeField] private AudioSource openCraftingUI;
     [SerializeField] private AudioSource closeCraftingUI;
 
@@ -404,5 +406,12 @@ public class AudioManager : MonoBehaviour
         int clip = UnityEngine.Random.Range(0, bearAttackClips.Length);
         bearAttack.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
         bearAttack.PlayOneShot(bearAttackClips[clip]);
+    }
+
+    public void ForestSpiritSFX()
+    {
+        int clip = UnityEngine.Random.Range(0, forestSpiritSFXClips.Length);
+        forestSpiritSFX.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+        forestSpiritSFX.PlayOneShot(forestSpiritSFXClips[clip]);
     }
 }
