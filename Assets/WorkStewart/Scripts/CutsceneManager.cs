@@ -3,18 +3,13 @@ using UnityEngine;
 public class CutsceneManager : MonoBehaviour
 {
     //SM
-    [SerializeField] bool hasTriggered;
+    [SerializeField] bool hasTriggered = false;
     [SerializeField] Vector3 placementDebug; //Used for adjusting cutscene movement only
     [SerializeField] string identifier = "";
     
-    Vector3 movePlayer;
-    private PlayerMovement player;
-    private GameObject playerGO;
-
-    private GameObject boss;
-    private GameObject preBoss;
-
-    public Canvas canvas;
+    public GameObject boss;
+    public GameObject preBoss;
+    public GameObject snowEffect;
     private AudioManager audioManager;
 
     void Awake()
@@ -26,11 +21,6 @@ public class CutsceneManager : MonoBehaviour
     {
         if (other.tag == "Player" && !hasTriggered)
         {
-            player = FindFirstObjectByType<PlayerMovement>();
-            playerGO = GameObject.Find("Player");
-            preBoss = GameObject.Find("PreBoss");
-            boss = GameObject.Find("Boss");
-
             hasTriggered = true;
 
             switch(identifier)
@@ -53,6 +43,7 @@ public class CutsceneManager : MonoBehaviour
 
     void cutscene1A()
     {
+        snowEffect.SetActive(true);
         preBoss.SetActive(false);
         boss.SetActive(true);
         audioManager.ForestSpiritSFX();

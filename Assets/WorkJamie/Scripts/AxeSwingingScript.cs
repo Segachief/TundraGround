@@ -42,6 +42,18 @@ public class AxeSwingingScript : MonoBehaviour // This script was written by Jam
                 StartCoroutine(DamageFlash(collision.gameObject));
                 collision.gameObject.GetComponentInParent<EnemyHealth>().Health--;
                 return;
+
+            case "Boss":
+                EnemyKnockbackAlt(collision.gameObject);
+                StartCoroutine(DamageFlashAlt(collision.gameObject));
+                collision.gameObject.GetComponent<BossManagement>().health--;
+                return;
+
+            case "Skull":
+                EnemyKnockbackAlt(collision.gameObject);
+                StartCoroutine(DamageFlashAlt(collision.gameObject));
+                collision.gameObject.GetComponent<BossDeath>().health--;
+                return;
         }
 
     }
@@ -70,5 +82,21 @@ public class AxeSwingingScript : MonoBehaviour // This script was written by Jam
         yield return new WaitForSeconds(0.2f);
         gameobj.GetComponentInParent<SpriteRenderer>().color = Color.white;
         
+    }
+
+    public IEnumerator DamageFlashAlt(GameObject gameobj)
+    {
+        gameobj.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        gameobj.GetComponent<SpriteRenderer>().color = Color.white;
+        
+    }
+
+    public void EnemyKnockbackAlt(GameObject enemy)
+    {
+        float knock_float = (enemy.gameObject.transform.position.x - transform.position.x);
+        Vector2 knockback_vec = new Vector2(knock_float * 175, 0f);
+
+        enemy.GetComponent<Rigidbody2D>().AddForce(knockback_vec);
     }
 }

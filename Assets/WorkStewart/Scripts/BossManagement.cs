@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class BossMovement : MonoBehaviour
+public class BossManagement : MonoBehaviour
 {
     //SM
     [SerializeField] float moveSpeed = 1f;
     [SerializeField] private Transform boss;
-    [SerializeField] int health = 250;
+    public int health = 250;
     Rigidbody2D rb;
     Animator myAnimator;
     private GameObject player;
