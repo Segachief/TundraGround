@@ -54,7 +54,7 @@ public class TrapScript : MonoBehaviour // This script was written by Jamie -
     private void UseTrap()
     {
 
-        Debug.Log(trapped_object.transform.parent.name);
+        Debug.Log(trapped_object.name);
         Vector2 TrapVector = new Vector2(transform.position.x, trapped_position.y - 0.3f);
         //if players y position isnt frozen thorough Rigidbody jump inputs stack and are added all at once when trap is destroyed.
         if(trapped_object.GetComponent<Rigidbody2D>() != null)
@@ -85,6 +85,7 @@ public class TrapScript : MonoBehaviour // This script was written by Jamie -
 
         else
         {
+            DisableColliders(false);
             if (trapped_object.GetComponent<Rigidbody2D>() != null)
             {
                 trapped_object.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -92,7 +93,6 @@ public class TrapScript : MonoBehaviour // This script was written by Jamie -
             else if (trapped_object.GetComponentInParent<BearPatrol>() != null)
             {
                 trapped_object.GetComponentInParent<BearPatrol>().enabled = true;
-                DisableColliders(false);
             }
             AudioSource.PlayClipAtPoint(GetComponent<AudioSource>().clip, transform.position);
             Instantiate(particle, transform.position, Quaternion.identity);
