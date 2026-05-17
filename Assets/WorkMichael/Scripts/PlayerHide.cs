@@ -1,6 +1,4 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-
 
 public class PlayerHide : MonoBehaviour
 {
@@ -9,16 +7,12 @@ public class PlayerHide : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Collider2D playerCollider;
 
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerCollider = GetComponent<Collider2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (canHide && Input.GetKeyDown(KeyCode.W))
@@ -33,13 +27,26 @@ public class PlayerHide : MonoBehaviour
         if (isHiding)
         {
             spriteRenderer.color = new Color(1f, 1f, 1f, 0.5f);
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
+            IgnoreEnemies(true);
         }
         else
         {
             spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
-        }   
+            IgnoreEnemies(false);
+        }
+    }
+
+    private void IgnoreEnemies(bool ignore)
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Collider2D enemyCollider = enemy.GetComponent<Collider2D>();
+            if (enemyCollider != null)
+            {
+                Physics2D.IgnoreCollision(playerCollider, enemyCollider, ignore);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -55,7 +62,10 @@ public class PlayerHide : MonoBehaviour
         if (other.CompareTag("HideSpot"))
         {
             canHide = false;
-            if (isHiding) ToggleHide();
+            if (isHiding)
+            {
+                ToggleHide();
+            }
         }
     }
 
@@ -64,5 +74,3 @@ public class PlayerHide : MonoBehaviour
         return isHiding;
     }
 }
-
-
