@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //SM
     [SerializeField] float moveSpeed = 4f;
     [SerializeField] float jumpSpeed = 11f;
     [SerializeField] float climbSpeed = 4;

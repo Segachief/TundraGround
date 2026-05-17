@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class OptionsManager : MonoBehaviour
 {
+    //SM
     public Slider musicVolumeSlider;
     public Slider sfxVolumeSlider;
     public AudioManager audioManager;

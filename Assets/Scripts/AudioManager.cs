@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
+    //SM
     [Header("Music")]
     [SerializeField] private AudioSource title;
     [SerializeField] private AudioSource mainMenu;
@@ -13,6 +14,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource level3;
     [SerializeField] private AudioSource level4;
     [SerializeField] private AudioSource level5;
+    [SerializeField] private AudioSource ending;
     [SerializeField] private AudioSource gameOver;
     [SerializeField] private AudioSource levelComplete;
 
@@ -21,6 +23,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource menuChoiceUI;
     [SerializeField] private AudioSource bearAttack;
     [SerializeField] private AudioClip[] bearAttackClips;
+    [SerializeField] private AudioSource forestSpiritSFX;
+    [SerializeField] private AudioClip[] forestSpiritSFXClips;
     [SerializeField] private AudioSource openCraftingUI;
     [SerializeField] private AudioSource closeCraftingUI;
 
@@ -36,6 +40,7 @@ public class AudioManager : MonoBehaviour
     public bool level3Playing = false;
     public bool level4Playing = false;
     public bool level5Playing = false;
+    public bool endingPlaying = false;
     public bool gameOverPlaying = false;
     public bool levelCompletePlaying = false;
 
@@ -191,6 +196,14 @@ public class AudioManager : MonoBehaviour
         if (!level5Playing)
         {
             level5.Play(); level5Playing = true;
+        }
+    }
+
+    public void StartEndingMusic()
+    {
+        if (!endingPlaying)
+        {
+            ending.Play(); endingPlaying = true;
         }
     }
 
@@ -393,5 +406,12 @@ public class AudioManager : MonoBehaviour
         int clip = UnityEngine.Random.Range(0, bearAttackClips.Length);
         bearAttack.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
         bearAttack.PlayOneShot(bearAttackClips[clip]);
+    }
+
+    public void ForestSpiritSFX()
+    {
+        int clip = UnityEngine.Random.Range(0, forestSpiritSFXClips.Length);
+        forestSpiritSFX.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+        forestSpiritSFX.PlayOneShot(forestSpiritSFXClips[clip]);
     }
 }

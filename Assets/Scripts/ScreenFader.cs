@@ -8,6 +8,7 @@ using System.Collections;
 // Typically a black image, but may work with other colours and regular images.
 public class ScreenFader : MonoBehaviour
 {
+    //SM
     public static ScreenFader Instance; // Singleton
 
     [Header("Fade Settings")]
