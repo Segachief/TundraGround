@@ -6,6 +6,7 @@ public class InteractableBehaviour : MonoBehaviour
 {
     private GameObject player;
     public GameObject wood;
+    public ParticleSystem pfx;
     private void Start()
     {
         player = GameObject.Find("Player");
@@ -39,10 +40,21 @@ public class InteractableBehaviour : MonoBehaviour
         if (gameObject.tag == "tree")
         {
             Instantiate(wood,gameObject.transform.position,Quaternion.identity);
+
+            Vector2 pfxspawn = new Vector2(transform.position.x, transform.position.y - 1);
+            Instantiate(pfx, pfxspawn, Quaternion.identity);
+
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<BoxCollider2D>().enabled = false;
+            GetComponent<AudioSource>().Play();
+            
+
         }
-        
-        Destroy(this.gameObject);
+
+        Destroy(gameObject, GetComponent<AudioSource>().clip.length);
     }
+
+
 }
 
 
