@@ -1,7 +1,7 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Script by Michael Arthur 
+using UnityEngine.SceneManagement; 
 
-public class LevelTransition : MonoBehaviour
+public class LevelTransition : MonoBehaviour // Script by Michael Arthur 
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -10,11 +10,11 @@ public class LevelTransition : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision) // This method is called when a collision occurs with the Player object
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.name == "Player") // Check if the colliding object is the player
         {
-            SceneManager.LoadScene("Level3");
+            SceneManager.LoadScene("Level3"); // Load the next scene named Level 3
         }
     }
 }
