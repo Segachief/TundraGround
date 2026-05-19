@@ -67,9 +67,12 @@ public class AxeSwingingScript : MonoBehaviour // This script was written by Jam
 
     public void EnemyKnockback(GameObject enemy)
     {
-        float knock_float = enemy.gameObject.transform.position.x - transform.position.x;
-        Vector2 knockback_vec = new Vector2(knock_float * 175, 0f);
-        enemy.GetComponentInParent<Rigidbody2D>().AddForce(knockback_vec);
+        Vector2 direction = (enemy.gameObject.transform.position - transform.position).normalized;
+        
+        
+
+        enemy.GetComponentInParent<BearPatrol>().IsKnockedBack = true;
+        enemy.GetComponentInParent<Rigidbody2D>().AddForce(direction * 0.55f,ForceMode2D.Impulse);
     }
 
     public IEnumerator DamageFlash(GameObject gameobj)

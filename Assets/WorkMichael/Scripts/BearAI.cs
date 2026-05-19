@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class BearPatrol : MonoBehaviour // Script by Michael Arthur
 {
@@ -20,17 +21,23 @@ public class BearPatrol : MonoBehaviour // Script by Michael Arthur
     [SerializeField] private float groundCheckDistance; // Distance for ground check raycast
     [SerializeField] private LayerMask groundLayer; // Layer to specify what is considered ground for the raycast
     [SerializeField] private float ChaseSpeed; // Speed of enemy when chasing the player
-
+    public bool IsKnockedBack = false;
 
 
     private void Awake()
     {
+       
         rb = enemy.GetComponent<Rigidbody2D>(); // Get Rigidbody component from enemy
         initScale = enemy.localScale; // Get initial scale of enemy
         playerHide = player.GetComponent<PlayerHide>(); // Get reference to PlayerHide script on player
     }
     private void FixedUpdate() // I used fixed update for better physics 
     {
+        if (IsKnockedBack)
+        {
+            StartCoroutine(RecoverFromKnockBack());
+            return;
+        }
         Vector2 direction = movingLeft ? Vector2.left : Vector2.right; // Direction enemy is moving in
         Vector2 origin = groundCheck.position + (Vector3)(direction * 0.5f); // Ground check raycast in front of enemy 
         Debug.DrawRay(origin, Vector2.down * groundCheckDistance, Color.red); // Debug for raycast 
@@ -96,7 +103,9 @@ public class BearPatrol : MonoBehaviour // Script by Michael Arthur
 
     private void StopAndTurn() // Method to stop enemy movement and call direction change method
     {
-        rb.linearVelocity = Vector2.zero;
+        //
+        //
+        //rb.linearVelocity = Vector2.zero;
         DirectionChange();
     }
 
@@ -121,9 +130,16 @@ public class BearPatrol : MonoBehaviour // Script by Michael Arthur
         bool groundAhead = Physics2D.Raycast(origin, Vector2.down, groundCheckDistance, groundLayer); // Check if there is ground ahead of bear while chasing player to prevent walking off edges
         if (!groundAhead) // Stop bear walking off edges
         {
-            rb.linearVelocity = Vector2.zero;
+            //rb.linearVelocity = Vector2.zero;
             return;
         }
         rb.linearVelocity = new Vector2(direction * ChaseSpeed, rb.linearVelocity.y); // Chase player
+    }
+
+
+    public IEnumerator RecoverFromKnockBack()
+    {
+        yield return new WaitForSecondsRealtime(0.3f);
+        IsKnockedBack = false;
     }
 }
