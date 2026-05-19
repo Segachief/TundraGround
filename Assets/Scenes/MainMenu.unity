@@ -900,11 +900,11 @@ MonoBehaviour:
   levelComplete: {fileID: 424049726}
   playerAttack: {fileID: 971917021}
   menuChoiceUI: {fileID: 245475871}
-  bearAttack: {fileID: 1744003491}
-  bearAttackClips:
-  - {fileID: 8300000, guid: aa6009850448d744fbc15fae8c471170, type: 3}
-  - {fileID: 8300000, guid: aa6009850448d744fbc15fae8c471170, type: 3}
-  - {fileID: 8300000, guid: aa6009850448d744fbc15fae8c471170, type: 3}
+  enemyDeath: {fileID: 1744003491}
+  enemyDeathClips:
+  - {fileID: 8300000, guid: 9c0a615c1738a2a41b066e3767513b3c, type: 3}
+  - {fileID: 8300000, guid: 9c0a615c1738a2a41b066e3767513b3c, type: 3}
+  - {fileID: 8300000, guid: 9c0a615c1738a2a41b066e3767513b3c, type: 3}
   forestSpiritSFX: {fileID: 1204923588}
   forestSpiritSFXClips:
   - {fileID: 8300000, guid: 511a3dde77a3260489de966076eb6bf4, type: 3}
@@ -1190,7 +1190,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.01
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1713,7 +1713,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.01
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2628,7 +2628,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.01
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -6015,7 +6015,7 @@ GameObject:
   - component: {fileID: 1744003490}
   - component: {fileID: 1744003491}
   m_Layer: 0
-  m_Name: BearAttack
+  m_Name: EnemyDeath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6047,7 +6047,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 274b34d05e749f54d9ea18b130af8e91, type: 3}
+  m_Resource: {fileID: 8300000, guid: 9c0a615c1738a2a41b066e3767513b3c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1
   m_Pitch: 1
@@ -11558,7 +11558,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.01
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

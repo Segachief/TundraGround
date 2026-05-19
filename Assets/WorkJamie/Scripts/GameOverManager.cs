@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class GameOverManager : MonoBehaviour // This script was written by Jamie
 // and then updated by SM hehe
 {
-
     private LevelManager levelManager;
 
     void Awake()

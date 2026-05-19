@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour /// Script written by Jamie -
     private PlayerHide playerHide;
     private LevelManager levelManager;
 
-void Awake()
+    void Awake()
     {
         levelManager = FindFirstObjectByType<LevelManager>();
     }
