@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour // made by Jamie
 {
     public int Health;
+    public bool hasDied = false;
 
     // Added audio manager ref - SM
     private AudioManager audioManager;
@@ -16,8 +17,9 @@ public class EnemyHealth : MonoBehaviour // made by Jamie
     // where damage flash can be trying to refer to the destroyed object. - SM 
     void Update()
     {
-        if(Health <= 0)
+        if(Health <= 0 && hasDied == false)
         {
+            hasDied = true;
             audioManager.EnemyDeathSFX();
             gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
             gameObject.GetComponentInChildren<BoxCollider2D>().enabled = false;
