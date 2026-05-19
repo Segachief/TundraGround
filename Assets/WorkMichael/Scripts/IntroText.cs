@@ -1,8 +1,9 @@
+using TMPro;
 using UnityEngine;
 
 public class IntroText : MonoBehaviour
 {
-    public GameObject Introtext;
+    public TextMeshProUGUI Introtext;
     public GameObject IntrotextObject;
     private bool playerInRange;
 
