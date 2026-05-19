@@ -16,7 +16,7 @@ public class crowAnimation : MonoBehaviour
         
     }
 
-    public void OnAnimatorMove(float move)
+    public void OnAnimatorMove()
     {
         //_anim.SetFloat("Move", Mathf.Abs(move));
     }
