@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,13 +9,22 @@ public class CrowMovement : MonoBehaviour
     public bool chase = false;
     public bool squawking = false;
     public Transform startingPoint;
-    private CircleCollider2D circleCollider;
+    private BoxCollider2D boxCollider;
+    public Animator animator;
+    public float speed = 0;
+
+
+
+    internal static string Squawking = "Squawking";
 
     private GameObject player;
+    public GameObject crowSquawkBox;
 
     [SerializeField] Transform target;
     [SerializeField] Transform home;
     NavMeshAgent agent;
+
+    [SerializeField] private LayerMask layersToExclude;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -44,6 +54,8 @@ public class CrowMovement : MonoBehaviour
         //crow will target player and move towards them
 
         agent.SetDestination(target.position);
+        speed = 1;
+        animator.SetFloat("Speed", speed);
 
         // if crow is near player, chase is paused and squawk is activated
         if (Vector2.Distance(transform.position, player.transform.position) <= 3f)
@@ -57,6 +69,9 @@ public class CrowMovement : MonoBehaviour
         {
             GetComponent<NavMeshAgent>().SetDestination(target.position);
             squawking = false;
+            speed = 1;
+            animator.SetBool("Squawking", false);
+            crowSquawkBox.SetActive(false);
             
         }
     }
@@ -65,9 +80,12 @@ public class CrowMovement : MonoBehaviour
     private void ReturnStartPoint()
     {
         //when player leaves crows radius, crow will target is starting point and will move towards it
-        //transform.position = Vector2.MoveTowards(transform.position, startingPoint.position, speed * Time.deltaTime);
 
         agent.SetDestination(home.position);
+        speed = 1;
+
+        if (Vector2.Distance(transform.position, home.transform.position) < 3f)
+            speed = 0;
 
         if (transform.position.x > startingPoint.transform.position.x)
             transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -104,6 +122,7 @@ public class CrowMovement : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             chase = false;
+            speed = 0;
         }
     }
 
@@ -113,16 +132,13 @@ public class CrowMovement : MonoBehaviour
         squawking = true;
         if (squawking == true)
         {
-            //atttract nearby enemies.
-            //activateCollider();
+            speed = 0;
+            animator.SetBool("Squawking", true);
+            crowSquawkBox.SetActive(true);
+
         }
 
     }
 
-    private void activateCollider()
-    {
-        circleCollider = gameObject.AddComponent<CircleCollider2D>();
-        circleCollider.radius = 30f;
-        circleCollider.enabled = true;
-    }
+   
 }
