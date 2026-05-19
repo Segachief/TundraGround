@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7600296556413253111}
   - component: {fileID: 7384215622367290252}
   - component: {fileID: 1774844076635181286}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,4 +175,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51dc1f45111da224991aa2e3f00414c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 5631616076712959541, guid: 1360901223e906946b6295ba5b8f27c7, type: 3}

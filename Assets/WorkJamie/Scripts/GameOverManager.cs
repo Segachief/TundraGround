@@ -25,7 +25,6 @@ public class GameOverManager : MonoBehaviour // This script was written by Jamie
             // will always play the last level the player played. - Jamie
 
             // Updated to use LevelManager - SM
-            SceneManager.LoadScene(PlayerPrefs.GetString("LastPlayedScene"));
             switch(PlayerPrefs.GetString("LastPlayedScene"))
             {
                 case "Level1":

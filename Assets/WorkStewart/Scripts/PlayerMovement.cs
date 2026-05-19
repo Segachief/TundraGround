@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 down_dir = new Vector2(0, -1);
     PlayerInput playerInput;
     bool IsGrounded;
+    public ParticleSystem playerjumppfx;
     void Start()
     {
         IsGrounded = true;
@@ -62,19 +63,29 @@ public class PlayerMovement : MonoBehaviour
         Run();
         FlipSprite();
         ClimbLadder();
+
+        //Jamie did this stuff-----------------------------
         CheckForAirTime();
         AmIDead();
         //to stop player from super-jumping
-
+        
         if (IsGrounded)
         {
             playerInput.actions.FindAction("Jump").Enable();
         }
         else
         {
-            playerInput.actions.FindAction("Jump").Disable();
+            playerInput.actions.FindAction("Jump").Disable(); 
         }
-        
+
+        if(playerInput.actions.FindAction("Jump").IsPressed() && IsGrounded && GetComponent<CapsuleCollider2D>().isActiveAndEnabled && !myAnimator.GetBool("IsDead"))
+        {
+            GetComponent<AudioSource>().Play();
+            Vector2 pfxspawn = new Vector2(transform.position.x, transform.position.y);
+            Instantiate(playerjumppfx,pfxspawn,Quaternion.identity);
+        }
+
+        //------------------------------------------
     }
 
     void OnMove(InputValue value)
