@@ -246,7 +246,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 6
-  EnemyDeathSFX: {fileID: 0}
 --- !u!1001 &3640851950127976064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -326,6 +325,14 @@ PrefabInstance:
     - target: {fileID: 9082339598380121478, guid: 000ffe1830d9b2f4ba8eaa332ec94795, type: 3}
       propertyPath: m_Size.y
       value: 5.65625
+      objectReference: {fileID: 0}
+    - target: {fileID: 9082339598380121478, guid: 000ffe1830d9b2f4ba8eaa332ec94795, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9082339598380121478, guid: 000ffe1830d9b2f4ba8eaa332ec94795, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -552536963
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8387927316348665748, guid: 000ffe1830d9b2f4ba8eaa332ec94795, type: 3}
