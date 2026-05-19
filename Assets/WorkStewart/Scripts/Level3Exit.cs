@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LevelExit : MonoBehaviour
+public class Level3Exit : MonoBehaviour
 {
     [SerializeField] bool hasTriggered;
     private LevelManager levelManager;
@@ -14,7 +14,7 @@ public class LevelExit : MonoBehaviour
     {
         if (other.tag == "Player" && !hasTriggered)
         {
-            levelManager.LoadEnding();
+            levelManager.LoadLevel4();
         }
     }
 }
