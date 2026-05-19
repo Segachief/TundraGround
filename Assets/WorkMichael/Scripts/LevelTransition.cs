@@ -3,10 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class LevelTransition : MonoBehaviour // Script by Michael Arthur 
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+    private LevelManager levelManager;
 
+    void Awake()
+    {
+        levelManager = FindFirstObjectByType<LevelManager>();
     }
 
     // Update is called once per frame
@@ -14,7 +15,7 @@ public class LevelTransition : MonoBehaviour // Script by Michael Arthur
     {
         if (collision.gameObject.name == "Player") // Check if the colliding object is the player
         {
-            SceneManager.LoadScene("Level3"); // Load the next scene named Level 3
+            levelManager.LoadLevel4();
         }
     }
 }
