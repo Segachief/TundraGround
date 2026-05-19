@@ -764,7 +764,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1569420229
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 2063826154672905881, guid: 9cf276d19a2161849897ce7f8187781b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.36862746}
@@ -1708,7 +1708,7 @@ MonoBehaviour:
   bridge: {fileID: 1074161722}
   promptTextObject: {fileID: 1985258068}
   promptText: {fileID: 1985258070}
-  woodCost: 30
+  woodCost: 10
 --- !u!61 &280330171
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2811,7 +2811,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1569420229
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 2063826154672905881, guid: 9cf276d19a2161849897ce7f8187781b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.36862746}
@@ -14335,7 +14335,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1569420229
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 2063826154672905881, guid: 9cf276d19a2161849897ce7f8187781b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.8901961}
@@ -15471,7 +15471,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1569420229
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 2063826154672905881, guid: 9cf276d19a2161849897ce7f8187781b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.09411765}
@@ -15589,7 +15589,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1569420229
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 2063826154672905881, guid: 9cf276d19a2161849897ce7f8187781b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.36862746}
@@ -15712,7 +15712,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1569420229
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 2063826154672905881, guid: 9cf276d19a2161849897ce7f8187781b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.8901961}
@@ -50635,9 +50635,13 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 3279
     m_Data: {fileID: 11400000, guid: 07b4d207aaa30dc488bc5c9ce3d1d212, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 3279
     m_Data: {fileID: -1491927957, guid: 4b8e6269840fb684aa492453495e2018, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 3279
     m_Data:
@@ -50863,7 +50867,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1569420229
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 2063826154672905881, guid: 9cf276d19a2161849897ce7f8187781b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.8901961}
@@ -51037,7 +51041,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1569420229
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 2063826154672905881, guid: 9cf276d19a2161849897ce7f8187781b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.8901961}
@@ -52278,7 +52282,7 @@ MonoBehaviour:
   bridge: {fileID: 2100240549}
   promptTextObject: {fileID: 453924490}
   promptText: {fileID: 453924492}
-  woodCost: 20
+  woodCost: 15
 --- !u!61 &1734882724
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -52915,7 +52919,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1569420229
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 2063826154672905881, guid: 9cf276d19a2161849897ce7f8187781b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.8901961}

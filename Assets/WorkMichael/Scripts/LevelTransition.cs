@@ -15,7 +15,7 @@ public class LevelTransition : MonoBehaviour // Script by Michael Arthur
     {
         if (collision.gameObject.name == "Player") // Check if the colliding object is the player
         {
-            levelManager.LoadLevel3();
+            levelManager.LoadLevel4();
         }
     }
 }
