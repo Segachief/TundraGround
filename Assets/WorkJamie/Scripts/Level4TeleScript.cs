@@ -5,7 +5,7 @@ public class Level4TeleScript : MonoBehaviour
 {
     private LevelManager levelManager;
 
- void Awake()
+    void Awake()
     {
         levelManager = FindFirstObjectByType<LevelManager>();
     }
