@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //SM
     [SerializeField] float moveSpeed = 4f;
     [SerializeField] float jumpSpeed = 11f;
     [SerializeField] float climbSpeed = 4;
@@ -48,11 +49,11 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (inventoryManager.Wood >= 10)
             {
-                rb.gravityScale = 2.2f;
+                rb.gravityScale = 2.1f;
             }
             else if (inventoryManager.Wood >= 20)
             {
-                rb.gravityScale = 2.5f;
+                rb.gravityScale = 2.3f;
             }
         }
 
@@ -180,8 +181,8 @@ public class PlayerMovement : MonoBehaviour
             //if theres a better way of doing this i dont know it clearly - J
             myAnimator.SetBool("isRunning",false);
             myAnimator.SetBool("IsJumping", false);
-           
-            myAnimator.SetBool("IsDead", true);
+            myAnimator.SetBool("AxeSwing", false);
+            myAnimator.SetTrigger("IsDead");
         }
     }
 }

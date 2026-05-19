@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    //SM
     string currentScene = "";
     private AudioManager audioManager;
     
@@ -108,6 +109,17 @@ public class LevelManager : MonoBehaviour
         ScreenFader.Instance.FadeToScene(currentScene);
         audioManager.StopMusic();
         audioManager.StartLevel5Music();
+        audioManager.StartFadeMusicIn(currentScene);
+    }
+
+    public void LoadEnding()
+    {
+        audioManager.StartFadeMusicOut(currentScene);
+        
+        currentScene = "Ending";
+        ScreenFader.Instance.FadeToScene(currentScene);
+        audioManager.StopMusic();
+        audioManager.StartEndingMusic();
         audioManager.StartFadeMusicIn(currentScene);
     }
 

@@ -1,20 +1,20 @@
 using UnityEngine;
 
-public class StickyPlatform : MonoBehaviour
+public class StickyPlatform : MonoBehaviour // Script by Michael Arthur
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) // When the player enters the trigger area of the platform it will set the players parent to the platform so that it moves with it
     {
-        collision.gameObject.CompareTag("Player");
+        if (collision.CompareTag("Player")) // Check if the colliding object has the tag Player
         {
-            collision.gameObject.transform.SetParent(transform);
+            collision.transform.SetParent(transform); // Set the parent of the colliding object to the platform
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision) // When the player exits the trigger area of the platform it will set the players parent to null so that it no longer moves with the platform
     {
-        collision.gameObject.CompareTag("Player");
+        if (collision.CompareTag("Player")) // Check if the colliding object has the tag Player
         {
-            collision.gameObject.transform.SetParent(null);
+            collision.transform.SetParent(null); // Set the parent of the colliding object to null so that it no longer moves with the platform
         }
     }
 }

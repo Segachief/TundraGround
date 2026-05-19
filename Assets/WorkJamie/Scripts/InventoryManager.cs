@@ -216,7 +216,7 @@ public class InventoryManager : MonoBehaviour
                 //IsTouchingGM is set from the InteractableBehaviour script attached to every Interactable GameObject.
                 if (IsTouchingGm.name.Contains("tree"))
                 {
-                    AddWood(20);
+                    AddWood(10);
                     
                     Destroy(IsTouchingGm.gameObject);
                 }
@@ -225,7 +225,7 @@ public class InventoryManager : MonoBehaviour
 
             case ("Trap"):
                 GameObject player = GameObject.Find("Player");
-                Vector3 vec = new Vector3(player.transform.GetChild(0).transform.position.x + player.transform.localScale.x * 1.5f, player.transform.GetChild(0).transform.position.y - 0.507f,0);
+                Vector3 vec = new Vector3(player.transform.GetChild(0).transform.position.x + player.transform.localScale.x * 1.1f, player.transform.GetChild(0).transform.position.y - 0.507f,0);
                 Instantiate(Trap,vec,Quaternion.identity);
 
                 return;
