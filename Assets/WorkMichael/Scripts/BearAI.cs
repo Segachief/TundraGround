@@ -29,6 +29,10 @@ public class BearPatrol : MonoBehaviour // Script by Michael Arthur
        
         rb = enemy.GetComponent<Rigidbody2D>(); // Get Rigidbody component from enemy
         initScale = enemy.localScale; // Get initial scale of enemy
+        if(player == null)
+        {
+            player = GameObject.Find("Player").transform;
+        }
         playerHide = player.GetComponent<PlayerHide>(); // Get reference to PlayerHide script on player
     }
     private void FixedUpdate() // I used fixed update for better physics 
