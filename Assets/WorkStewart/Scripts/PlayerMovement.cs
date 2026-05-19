@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
             playerInput.actions.FindAction("Jump").Disable(); 
         }
 
-        if(playerInput.actions.FindAction("Jump").IsPressed() && IsGrounded && GetComponent<CapsuleCollider2D>().isActiveAndEnabled)
+        if(playerInput.actions.FindAction("Jump").IsPressed() && IsGrounded && GetComponent<CapsuleCollider2D>().isActiveAndEnabled && !myAnimator.GetBool("IsDead"))
         {
             GetComponent<AudioSource>().Play();
             Vector2 pfxspawn = new Vector2(transform.position.x, transform.position.y);
