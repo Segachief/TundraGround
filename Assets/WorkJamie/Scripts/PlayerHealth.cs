@@ -30,6 +30,11 @@ void Awake()
             Health--;
             return;
         }
+        else if (collision.gameObject.tag == "Boss")
+        {
+            Health--;
+            return;
+        }
     }
 
     public void PlayerDeath()
