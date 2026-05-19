@@ -1057,7 +1057,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 8604604351a061747a586545f16fe946, type: 3}
+  m_Resource: {fileID: 8300000, guid: be4be5a798eed704e9e9fa2c5fbff553, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.01
   m_Pitch: 1
@@ -1186,7 +1186,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: c27382d2f0ef98045898a6d7efba426f, type: 3}
+  m_Resource: {fileID: 8300000, guid: 59ca078557766e149bd7b7935ff4cc08, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.01
   m_Pitch: 1
@@ -2624,7 +2624,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: c27382d2f0ef98045898a6d7efba426f, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a2b4f5a770266045b96a233d0cbf60f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.01
   m_Pitch: 1
@@ -3015,11 +3015,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: c27382d2f0ef98045898a6d7efba426f, type: 3}
+  m_Resource: {fileID: 8300000, guid: be4be5a798eed704e9e9fa2c5fbff553, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3409,7 +3409,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 217212a90fd41344291d9770e6e26158, type: 3}
+  m_Resource: {fileID: 8300000, guid: 79270d49b54a0964081149d6c843af26, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.01
   m_Pitch: 1
@@ -4604,7 +4604,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: c27382d2f0ef98045898a6d7efba426f, type: 3}
+  m_Resource: {fileID: 8300000, guid: be4be5a798eed704e9e9fa2c5fbff553, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.01
   m_Pitch: 1
@@ -5754,7 +5754,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2064712174}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: LoadLevel1
+        m_MethodName: LoadLevel2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11554,7 +11554,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: c27382d2f0ef98045898a6d7efba426f, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a2b4f5a770266045b96a233d0cbf60f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.01
   m_Pitch: 1
