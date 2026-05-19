@@ -5,8 +5,13 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour /// Script written by Jamie - 
 {
     public int Health;
-
     private PlayerHide playerHide;
+    private LevelManager levelManager;
+
+void Awake()
+    {
+        levelManager = FindFirstObjectByType<LevelManager>();
+    }
 
     void Start()
     {
@@ -29,6 +34,6 @@ public class PlayerHealth : MonoBehaviour /// Script written by Jamie -
 
     public void PlayerDeath()
     {
-        SceneManager.LoadScene("GameOver");
+        levelManager.LoadGameOver();
     }
 }
