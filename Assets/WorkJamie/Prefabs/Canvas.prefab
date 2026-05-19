@@ -110,7 +110,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1569420229
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: -1
   m_Sprite: {fileID: 1776827878349534102, guid: e1f2f841badff604885aedd5d39a60c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -235,7 +235,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1569420229
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: -1
   m_Sprite: {fileID: 1776827878349534102, guid: e1f2f841badff604885aedd5d39a60c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Wood: 0
-  inventory_open_key: 282
+  inventory_open_key: 105
   Inventory:
   - {fileID: 0}
   - {fileID: 0}
@@ -1335,7 +1335,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1569420229
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: -1
   m_Sprite: {fileID: 1776827878349534102, guid: e1f2f841badff604885aedd5d39a60c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1422,7 +1422,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1569420229
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: -1
   m_Sprite: {fileID: 1776827878349534102, guid: e1f2f841badff604885aedd5d39a60c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
