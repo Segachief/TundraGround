@@ -2,17 +2,26 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour // made by Jamie
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public int Health;
-    public AudioSource EnemyDeathSFX;
 
-    // Update is called once per frame
+    // Added audio manager ref - SM
+    private AudioManager audioManager;
+    
+    void Awake()
+    {
+        audioManager = FindFirstObjectByType<AudioManager>();
+    }
+
+    // Updated to deactivate object instead of destroy to avoid a crash
+    // where damage flash can be trying to refer to the destroyed object. - SM 
     void Update()
     {
         if(Health <= 0)
         {
-            //EnemyDeathSFX.Play();
-            Destroy(gameObject);
+            audioManager.EnemyDeathSFX();
+            gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
+            gameObject.GetComponentInChildren<BoxCollider2D>().enabled = false;
+            //Destroy(gameObject);
         }
     }
 }

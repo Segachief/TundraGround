@@ -10,7 +10,7 @@ public class AxeSwingingScript : MonoBehaviour // This script was written by Jam
     Animator myAnimator;
     private bool IsAxeSwinging;
     private PlayerHealth playerHealth;
-    // Update is called once per frame
+
     private void Awake()
     {
         playerHealth = GetComponentInParent<PlayerHealth>();
@@ -23,16 +23,13 @@ public class AxeSwingingScript : MonoBehaviour // This script was written by Jam
         if(Input.GetKeyDown(Axe_Button) && InventoryManager.instance.Inventory.Contains(axe) && playerHealth.Health > 0)
         {
             myAnimator.SetTrigger("AxeSwing");
-            
         }
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         switch (collision.gameObject.tag)
         {
-
             case "tree":
                 collision.gameObject.GetComponent<InteractableBehaviour>().DestroyTree();
                 return;
@@ -70,9 +67,8 @@ public class AxeSwingingScript : MonoBehaviour // This script was written by Jam
 
     public void EnemyKnockback(GameObject enemy)
     {
-        float knock_float = (enemy.gameObject.transform.position.x - transform.position.x);
+        float knock_float = enemy.gameObject.transform.position.x - transform.position.x;
         Vector2 knockback_vec = new Vector2(knock_float * 175, 0f);
-
         enemy.GetComponentInParent<Rigidbody2D>().AddForce(knockback_vec);
     }
 
@@ -81,7 +77,6 @@ public class AxeSwingingScript : MonoBehaviour // This script was written by Jam
         gameobj.GetComponentInParent<SpriteRenderer>().color = Color.red;
         yield return new WaitForSeconds(0.2f);
         gameobj.GetComponentInParent<SpriteRenderer>().color = Color.white;
-        
     }
 
     public IEnumerator DamageFlashAlt(GameObject gameobj)
@@ -89,14 +84,12 @@ public class AxeSwingingScript : MonoBehaviour // This script was written by Jam
         gameobj.GetComponent<SpriteRenderer>().color = Color.red;
         yield return new WaitForSeconds(0.2f);
         gameobj.GetComponent<SpriteRenderer>().color = Color.white;
-        
     }
 
     public void EnemyKnockbackAlt(GameObject enemy)
     {
         float knock_float = (enemy.gameObject.transform.position.x - transform.position.x);
         Vector2 knockback_vec = new Vector2(knock_float * 175, 0f);
-
         enemy.GetComponent<Rigidbody2D>().AddForce(knockback_vec);
     }
 }

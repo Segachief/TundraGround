@@ -21,8 +21,8 @@ public class AudioManager : MonoBehaviour
     [Header("SFX")]
     [SerializeField] private AudioSource playerAttack;
     [SerializeField] private AudioSource menuChoiceUI;
-    [SerializeField] private AudioSource bearAttack;
-    [SerializeField] private AudioClip[] bearAttackClips;
+    [SerializeField] private AudioSource enemyDeath;
+    [SerializeField] private AudioClip[] enemyDeathClips;
     [SerializeField] private AudioSource forestSpiritSFX;
     [SerializeField] private AudioClip[] forestSpiritSFXClips;
     [SerializeField] private AudioSource openCraftingUI;
@@ -401,11 +401,11 @@ public class AudioManager : MonoBehaviour
 
     // This method gives the option to play SFX with a random pitch
     // to avoid repetition
-    public void PlayRandomPitch()
+    public void EnemyDeathSFX()
     {
-        int clip = UnityEngine.Random.Range(0, bearAttackClips.Length);
-        bearAttack.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
-        bearAttack.PlayOneShot(bearAttackClips[clip]);
+        int clip = UnityEngine.Random.Range(0, enemyDeathClips.Length);
+        enemyDeath.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+        enemyDeath.PlayOneShot(enemyDeathClips[clip]);
     }
 
     public void ForestSpiritSFX()
