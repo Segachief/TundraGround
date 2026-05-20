@@ -72,6 +72,7 @@ public class CrowMovement : MonoBehaviour
             speed = 1;
             animator.SetBool("Squawking", false);
             crowSquawkBox.SetActive(false);
+            chase = true;
             
         }
     }

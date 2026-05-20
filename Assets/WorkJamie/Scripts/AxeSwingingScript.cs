@@ -51,6 +51,8 @@ public class AxeSwingingScript : MonoBehaviour // This script was written by Jam
                 StartCoroutine(DamageFlashAlt(collision.gameObject));
                 collision.gameObject.GetComponent<BossDeath>().health--;
                 return;
+            
+
         }
 
     }
