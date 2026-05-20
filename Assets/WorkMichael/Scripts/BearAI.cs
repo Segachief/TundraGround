@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BearPatrol : MonoBehaviour // Script by Michael Arthur
@@ -121,7 +122,7 @@ public class BearPatrol : MonoBehaviour // Script by Michael Arthur
         rb.linearVelocity = new Vector2(_direction * speed, rb.linearVelocity.y); // Move in that direction
     }
 
-    private void ChasePlayer() // I had to use some ChatGPT help for this method to get the ground check working properly while chasing the player. Because the bear was floating in the air when it reached edges while chasing the player
+    public void ChasePlayer() // I had to use some ChatGPT help for this method to get the ground check working properly while chasing the player. Because the bear was floating in the air when it reached edges while chasing the player
     { // I also used some ChatGPT to help me with the Math of some of this code 
         anim.SetBool("isWalking", true); // Set walking animation to true when chasing player
         if (player.position.x > enemy.position.x) // Face the player
@@ -145,5 +146,22 @@ public class BearPatrol : MonoBehaviour // Script by Michael Arthur
     {
         yield return new WaitForSecondsRealtime(0.3f);
         IsKnockedBack = false;
+    }
+
+    //calum yule
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "crow")
+        {
+            chaseRange = 20;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "crow")
+        {
+            chaseRange = 3;
+        }
     }
 }
