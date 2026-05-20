@@ -110,7 +110,6 @@ GameObject:
   - component: {fileID: 7653666990102078952}
   - component: {fileID: 675447720199706407}
   - component: {fileID: 7373746287443320678}
-  - component: {fileID: 3997504878686150793}
   - component: {fileID: 3402259544111352641}
   m_Layer: 0
   m_Name: Player
@@ -177,7 +176,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1569420229
-  m_SortingLayer: 6
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -5667695541409424796, guid: 106e3e2124ade3d45906ddc0ec3d5bac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -336,19 +335,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 1
+  godToggleButton: 284
+  godModeState: 0
 --- !u!114 &7373746287443320678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5631616076712959541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a439e888d7f8e2346969c39283dfb2b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3997504878686150793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -373,7 +362,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 55c89406451b0fe4d95cbeb30a190cd3, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.44
+  m_Volume: 0.144
   m_Pitch: 1
   Loop: 0
   Mute: 0
