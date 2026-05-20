@@ -19,7 +19,7 @@ public class ItemDataScript : MonoBehaviour
     
         images[1].sprite = item.icon;
         texts[0].text = item.Name;
-        texts[1].text = item.WoodRequirement.ToString();
+        texts[1].text = ("Wood: "+item.WoodRequirement.ToString());
 
     }
 }
