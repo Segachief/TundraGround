@@ -113,6 +113,7 @@ public class AudioManager : MonoBehaviour
         level5.Stop(); level5Playing = false;
         gameOver.Stop(); gameOverPlaying = false;
         levelComplete.Stop(); levelCompletePlaying = false;
+        ending.Stop(); endingPlaying = false;
     }
 
     public void UpdateSFXVolume(float newSFXVolume)
@@ -306,6 +307,14 @@ public class AudioManager : MonoBehaviour
                     yield return new WaitForSeconds(fadeTimerInterval);
                 }
                 break;
+
+                case "Ending":
+                while (ending.volume < musicVolume)
+                {
+                    ending.volume += 0.0001f;
+                    yield return new WaitForSeconds(fadeTimerInterval);
+                }
+                break;
             }
         }
         else if (fade == "FadeOut")
@@ -396,6 +405,15 @@ public class AudioManager : MonoBehaviour
                     yield return new WaitForSeconds(fadeTimerInterval);
                 }
                 levelComplete.Stop(); levelCompletePlaying = false;
+                break;
+
+                case "Ending":
+                while (ending.volume > 0)
+                {
+                    ending.volume -= 0.0001f;
+                    yield return new WaitForSeconds(fadeTimerInterval);
+                }
+                ending.Stop(); endingPlaying = false;
                 break;
             }
         }

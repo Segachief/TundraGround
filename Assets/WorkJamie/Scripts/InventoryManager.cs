@@ -75,9 +75,7 @@ public class InventoryManager : MonoBehaviour
         {
             AddWood(1);
         }
-
-
-
+        
         ///open and closing inventoryUI and slowing down time
         if (Input.GetKeyDown(inventory_open_key))
         {
