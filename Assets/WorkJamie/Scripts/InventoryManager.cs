@@ -20,6 +20,8 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager instance;
     public float MenuTime;
     public GameObject Trap;
+    public GameObject player;
+    public bool godMode = false;
     void Awake()
     {
         //set instance
@@ -33,17 +35,16 @@ public class InventoryManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-
-
         //set To length of inventory to avoid any errors. 
         InventoryIcons = new GameObject[Inventory.Length];
+        player = GameObject.Find("Player");
     }
 
 
     private void Start()
     {
         //any gameobjects needing a reference are done here --
-      
+
         WoodText = GameObject.Find("WoodText").GetComponent<TextMeshProUGUI>();
         InventoryUI = GameObject.Find("Background");
         GameObject InvButtons = GameObject.Find("Icons");
@@ -68,11 +69,11 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        godMode = player.GetComponent<PlayerHealth>().godModeState;
         //this is for debug purposes
-        if (Input.GetKeyDown(KeyCode.T))
+        if (godMode && Input.GetKeyDown(KeyCode.T))
         {
             AddWood(1);
-            
         }
 
 
