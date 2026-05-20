@@ -764,7 +764,7 @@ MonoBehaviour:
   ending: {fileID: 1360888587}
   gameOver: {fileID: 1052122495}
   levelComplete: {fileID: 424049726}
-  playerAttack: {fileID: 971917021}
+  playerJump: {fileID: 971917021}
   menuChoiceUI: {fileID: 245475871}
   enemyDeath: {fileID: 1744003491}
   enemyDeathClips:
@@ -2702,7 +2702,7 @@ GameObject:
   - component: {fileID: 971917020}
   - component: {fileID: 971917021}
   m_Layer: 0
-  m_Name: PlayerAttack
+  m_Name: PlayerJump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2734,7 +2734,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 274b34d05e749f54d9ea18b130af8e91, type: 3}
+  m_Resource: {fileID: 8300000, guid: 55c89406451b0fe4d95cbeb30a190cd3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1
   m_Pitch: 1

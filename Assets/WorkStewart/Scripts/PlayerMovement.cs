@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     PlayerInput playerInput;
     bool IsGrounded;
     public ParticleSystem playerjumppfx;
+    private AudioManager audioManager;
     void Start()
     {
         IsGrounded = true;
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
         myCapsuleCollider = GetComponent<CapsuleCollider2D>();
         playerGravity = rb.gravityScale;
         inventoryManager = FindFirstObjectByType<InventoryManager>();
+        audioManager = FindFirstObjectByType<AudioManager>();
     }
 
     void FixedUpdate()
@@ -80,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(playerInput.actions.FindAction("Jump").IsPressed() && IsGrounded && GetComponent<CapsuleCollider2D>().isActiveAndEnabled && !myAnimator.GetBool("IsDead"))
         {
-            GetComponent<AudioSource>().Play();
+            audioManager.PlayerJumpSFX();
             Vector2 pfxspawn = new Vector2(transform.position.x, transform.position.y);
             Instantiate(playerjumppfx,pfxspawn,Quaternion.identity);
         }

@@ -44,11 +44,11 @@ public class PlayerHealth : MonoBehaviour /// Script written by Jamie -
     void Update()
     {
         // Toggles God Mode on Player when pressed
-        if(Input.GetKeyDown(godToggleButton) && (godModeState = false))
+        if(Input.GetKeyDown(godToggleButton) && (godModeState == false))
         {
             godModeState = true;
         }
-        else if(Input.GetKeyDown(godToggleButton) && (godModeState = true))
+        else if(Input.GetKeyDown(godToggleButton) && (godModeState == true))
         {
             godModeState = false;
         }
