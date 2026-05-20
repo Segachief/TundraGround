@@ -68,15 +68,7 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //this is for debug purposes
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            AddWood(1);
-            
-        }
-
-
-
+        
         ///open and closing inventoryUI and slowing down time
         if (Input.GetKeyDown(inventory_open_key))
         {
