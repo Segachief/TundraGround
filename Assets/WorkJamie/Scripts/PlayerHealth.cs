@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour /// Script written by Jamie - 
 {
     public int Health;
+    public KeyCode godToggleButton;
+    public bool godModeState;
     private PlayerHide playerHide;
     private LevelManager levelManager;
 
@@ -25,15 +27,30 @@ public class PlayerHealth : MonoBehaviour /// Script written by Jamie -
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" && !playerHide.IsHiding())
+        if(!godModeState)
         {
-            Health--;
-            return;
+            if (collision.gameObject.tag == "Enemy" && !playerHide.IsHiding())
+            {
+                Health--;
+                return;
+            }
+            else if (collision.gameObject.tag == "Boss")
+            {
+                Health--;
+                return;
+            }
         }
-        else if (collision.gameObject.tag == "Boss")
+    }
+    void Update()
+    {
+        // Toggles God Mode on Player when pressed
+        if(Input.GetKeyDown(godToggleButton) && (godModeState == false))
         {
-            Health--;
-            return;
+            godModeState = true;
+        }
+        else if(Input.GetKeyDown(godToggleButton) && (godModeState == true))
+        {
+            godModeState = false;
         }
     }
 

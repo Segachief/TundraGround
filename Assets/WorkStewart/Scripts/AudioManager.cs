@@ -19,7 +19,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource levelComplete;
 
     [Header("SFX")]
-    [SerializeField] private AudioSource playerAttack;
+    [SerializeField] private AudioSource playerJump;
     [SerializeField] private AudioSource menuChoiceUI;
     [SerializeField] private AudioSource enemyDeath;
     [SerializeField] private AudioClip[] enemyDeathClips;
@@ -118,8 +118,10 @@ public class AudioManager : MonoBehaviour
 
     public void UpdateSFXVolume(float newSFXVolume)
     {
-        playerAttack.volume = newSFXVolume;
+        playerJump.volume = newSFXVolume;
         menuChoiceUI.volume = newSFXVolume;
+        enemyDeath.volume = newSFXVolume;
+        forestSpiritSFX.volume = newSFXVolume;
     }
 
     public void MenuButtonSFX()
@@ -431,5 +433,10 @@ public class AudioManager : MonoBehaviour
         int clip = UnityEngine.Random.Range(0, forestSpiritSFXClips.Length);
         forestSpiritSFX.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
         forestSpiritSFX.PlayOneShot(forestSpiritSFXClips[clip]);
+    }
+
+    public void PlayerJumpSFX()
+    {
+        playerJump.Play();
     }
 }
