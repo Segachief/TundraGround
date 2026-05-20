@@ -21,8 +21,18 @@ public class EnemyHealth : MonoBehaviour // made by Jamie
         {
             hasDied = true;
             audioManager.EnemyDeathSFX();
+        
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        foreach(Transform child in transform)
+        {
+            foreach(BoxCollider2D comp in child.GetComponentsInChildren<BoxCollider2D>())
+            {
+                comp.enabled = false;
+            }
+        }
             gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
-            gameObject.GetComponentInChildren<BoxCollider2D>().enabled = false;
+            //gameObject.GetComponentInChildren<BoxCollider2D>().enabled = false;
+            //gameObject.GetComponentInParent<BoxCollider2D>().enabled = false;
             //Destroy(gameObject);
         }
     }
