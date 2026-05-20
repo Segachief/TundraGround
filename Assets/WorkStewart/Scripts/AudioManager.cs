@@ -76,29 +76,29 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        if(!PlayerPrefs.HasKey("musicVolume"))
-        {
-            // Default if there is no saved audio preference
-            PlayerPrefs.SetFloat("musicVolume", 0.1f);
-            musicVolume = PlayerPrefs.GetFloat("musicVolume");
-        }
-        else
-        {
-            // Loads previously set audio setting
-            PlayerPrefs.SetFloat("musicVolume", musicVolume);
-        }
+        // if(!PlayerPrefs.HasKey("musicVolume"))
+        // {
+        //     // Default if there is no saved audio preference
+        //     PlayerPrefs.SetFloat("musicVolume", 0.1f);
+        //     musicVolume = PlayerPrefs.GetFloat("musicVolume");
+        // }
+        // else
+        // {
+        //     // Loads previously set audio setting
+        //     PlayerPrefs.SetFloat("musicVolume", musicVolume);
+        // }
 
-        if(!PlayerPrefs.HasKey("sfxVolume"))
-        {
-            // Default if there is no saved audio preference
-            PlayerPrefs.SetFloat("sfxVolume", 0.1f);
-            sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
-        }
-        else
-        {
-            // Loads previously set audio setting
-            PlayerPrefs.SetFloat("sfxVolume", sfxVolume);
-        }
+        // if(!PlayerPrefs.HasKey("sfxVolume"))
+        // {
+        //     // Default if there is no saved audio preference
+        //     PlayerPrefs.SetFloat("sfxVolume", 0.1f);
+        //     sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
+        // }
+        // else
+        // {
+        //     // Loads previously set audio setting
+        //     PlayerPrefs.SetFloat("sfxVolume", sfxVolume);
+        // }
     }
 
     // Stops all music in preparation for the next track or for silence
@@ -122,6 +122,20 @@ public class AudioManager : MonoBehaviour
         menuChoiceUI.volume = newSFXVolume;
         enemyDeath.volume = newSFXVolume;
         forestSpiritSFX.volume = newSFXVolume;
+    }
+
+        public void UpdateMusicVolume(float newMusicVolume)
+    {
+        title.volume = newMusicVolume;
+        mainMenu.volume = newMusicVolume;
+        level1.volume = newMusicVolume;
+        level2.volume = newMusicVolume;
+        level3.volume = newMusicVolume;
+        level4.volume = newMusicVolume;
+        level5.volume = newMusicVolume;
+        gameOver.volume = newMusicVolume;
+        levelComplete.volume = newMusicVolume;
+        ending.volume = newMusicVolume;
     }
 
     public void MenuButtonSFX()

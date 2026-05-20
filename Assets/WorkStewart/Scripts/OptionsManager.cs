@@ -38,12 +38,13 @@ public class OptionsManager : MonoBehaviour
 
     private void SaveMusic()
     {
-        PlayerPrefs.SetFloat("musicVolume", musicVolumeSlider.value);
+        //PlayerPrefs.SetFloat("musicVolume", musicVolumeSlider.value);
+        audioManager.UpdateMusicVolume(musicVolumeSlider.value);
     }
 
     private void SaveSFX()
     {
-        PlayerPrefs.SetFloat("sfxVolume", sfxVolumeSlider.value);
-        //audioManager.UpdateSFXVolume(sfxVolumeSlider.value);
+        //PlayerPrefs.SetFloat("sfxVolume", sfxVolumeSlider.value);
+        audioManager.UpdateSFXVolume(sfxVolumeSlider.value);
     }
 }
