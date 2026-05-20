@@ -40,6 +40,10 @@ public class TrapScript : MonoBehaviour // This script was written by Jamie -
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.name == "AxeHitbox")
+        {
+            return;
+        }
         if (!TrapActive)
         {
             trapped_position = collision.gameObject.transform.position;
